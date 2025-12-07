@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ePortfolio - Alexis Messager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Eportfolio Alexis</div>
+    <nav>
+      <a href="#about">À propos</a>
+      <a href="#competences">Compétences</a>
+      <a href="#formations">Formations</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#projets">Projets</a>
+      <a href="#stages">Stages</a>
+      <a href="#veille">Veille</a>
+      <a href="#contact" class="btn small">Contact</a> 
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Alexis <span class="gradient">Messager</span></h1>
+      <p>Étudiant en BTS SIO option SISR, passionné par les nouvelles technologies et les innovations systèmes réseaux</p>
+      <div class="cta">
+        <button class="btn" onclick="openModal('Contact')">Contactez-moi</button>
+        <button class="btn outline" onclick="scrollToSection('projets')">Voir mes projets</button>
+      </div>
+    </div>
+    <div class="hero-img">
+      <!-- Nœuds du réseau -->
+      <div class="network-node"></div>
+      <div class="network-node"></div>
+      <div class="network-node"></div>
+      <div class="network-node"></div>
+      <div class="network-node"></div>
+      <div class="network-node"></div>
+      <div class="network-node"></div>
+      <!-- Lignes de connexion -->
+      <div class="network-line"></div>
+      <div class="network-line"></div>
+      <div class="network-line"></div>
+      <div class="network-line"></div>
+      <!-- Paquets de données -->
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+    </div>
+  </section>
+
+  <main>
+    <section id="about" class="reveal">
+      <h2>À propos</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--muted); line-height: 1.8;">
+        Je suis un étudiant motivé en système et réseaux. J'aime innover et participer à des projets; de créer, apprendre, d'avoir une finalité brute à mon travail.
+      </p>
+    </section>
+
+    <section id="competences" class="reveal">
+      <h2>Compétences</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>💻 Développement Web</h3>
+          <div class="skills-list">
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>🖥️ Systèmes & Virtualisation</h3>
+          <div class="skills-list">
+            <span class="skill-tag">VirtualBox</span>
+            <span class="skill-tag">Administration VM</span>
+            <span class="skill-tag">Configuration Systèmes</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>🌐 Réseaux</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Cisco Packet Tracer</span>
+            <span class="skill-tag">Configuration Réseau</span>
+            <span class="skill-tag">Architecture Réseau</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="formations" class="reveal">
+      <h2>Formations</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Bac Pro en Système Numérique</h3>
+          <p>Lycée Lasalle St-Denis (2022–2025)</p>
+        </div>
+        <div class="card">
+          <h3>BTS SIO</h3>
+          <p>Pôle supérieur Turgot (2025–2027)</p>
+        </div>
+        <div class="card">
+          <h3>Collège</h3>
+          <p>Collège Privé Notre-Dame Providence</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="reveal">
+      <h2>Certifications</h2>
+      <div class="certifications-grid">
+        <div class="certification-card">
+          <div class="cert-badge cisco-blue">
+            <div class="cert-header">
+              <span class="cisco-logo">CISCO</span>
+              <span class="networking-academy">Networking Academy</span>
+            </div>
+            <div class="verified-badge">Verified</div>
+            <div class="cert-waves blue-waves"></div>
+            <div class="cert-title">Computer Hardware Basics</div>
+          </div>
+          <div class="cert-info">
+            <h3>Notions de base en matériel informatique</h3>
+            <p class="cert-issuer">🏢 Cisco Networking Academy</p>
+          </div>
+        </div>
+
+        <div class="certification-card">
+          <div class="cert-badge cisco-green">
+            <div class="cert-header">
+              <span class="cisco-logo">CISCO</span>
+              <span class="networking-academy">Networking Academy</span>
+            </div>
+            <div class="verified-badge">Verified</div>
+            <div class="cert-waves green-waves"></div>
+            <div class="cert-title">Introduction to Packet Tracer</div>
+          </div>
+          <div class="cert-info">
+            <h3>Introduction à Packet Tracer</h3>
+            <p class="cert-issuer">🏢 Cisco Networking Academy</p>
+          </div>
+        </div>
+
+        <div class="certification-card">
+          <div class="cert-badge cisco-blue">
+            <div class="cert-header">
+              <span class="cisco-logo">CISCO</span>
+              <span class="networking-academy">Networking Academy</span>
+            </div>
+            <div class="verified-badge">Verified</div>
+            <div class="cert-waves blue-waves"></div>
+            <div class="cert-title">Networking Basics</div>
+          </div>
+          <div class="cert-info">
+            <h3>Notions de base en matière de réseaux</h3>
+            <p class="cert-issuer">🏢 Cisco Networking Academy</p>
+          </div>
+        </div>
+
+        <div class="certification-card">
+          <div class="cert-badge cisco-blue">
+            <div class="cert-header">
+              <span class="cisco-logo">CISCO</span>
+              <span class="networking-academy">Networking Academy</span>
+            </div>
+            <div class="verified-badge">Verified</div>
+            <div class="cert-waves blue-waves"></div>
+            <div class="cert-title">Operating Systems Basics</div>
+          </div>
+          <div class="cert-info">
+            <h3>Notions de base des systèmes d'exploitation</h3>
+            <p class="cert-issuer">🏢 Cisco Networking Academy</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projets" class="reveal">
+      <h2>Projets</h2>
+      <div class="projects">
+        <div class="project" onclick="openModal('Portfolio')">
+          <div class="thumb">🎨</div>
+          <div class="info">
+            <h3>Portfolio</h3>
+            <p>Création d'un site personnel moderne et animé.</p>
+          </div>
+        </div>
+        <div class="project" onclick="openModal('Site de location')">
+          <div class="thumb">🚗</div>
+          <div class="info">
+            <h3>Création site web</h3>
+            <p>Site de location de voiture en ligne</p>
+          </div>
+        </div>
+        <div class="project" onclick="openModal('Serveur de jeu')">
+          <div class="thumb">🎮</div>
+          <div class="info">
+            <h3>Serveur de jeu</h3>
+            <p>Création d'un serveur de jeu sur Ubuntu pour y jouer sur plusieurs hôtes</p>
+          </div>
+        </div>
+        <div class="project" onclick="openModal('Infrastructure réseau')">
+          <div class="thumb">💻</div>
+          <div class="info">
+            <h3>Infrastructure réseau (logiciel)</h3>
+            <p>Création d'une infrastructure réseau sur Cisco PacketTracer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stages" class="reveal">
+      <h2>Stages</h2>
+      <ul class="timeline">
+        <li>
+          <span>2025 - Groupe Henner</span>
+          Support informatique. Gestion des tickets, dépannage informatique, gestion du parc informatique
+        </li>
+        <li>
+          <span>2024 - Groupe Henner</span>
+          Support informatique. Gestion des tickets, dépannage informatique, gestion du parc informatique
+        </li>
+        <li>
+          <span>2023 - SEREEM</span>
+          Fabrication de coffret et d'armoire électrique. Câblage coffret et armoire électrique
+        </li>
+        <li>
+          <span>2022 - Mairie d'Epinay-sur-Seine</span>
+          Gestion des passeports et carte d'identités, suivi de dossiers, accueil
+        </li>
+      </ul>
+    </section>
+
+    <section id="veille" class="reveal">
+      <h2>Veille technologique</h2>
+      <div class="veille-container">
+        <div class="veille-card">
+          <h3>🤖 Les IA Prédictives en Maintenance Technique</h3>
+          <div class="veille-content">
+            <h4>📌 Contexte</h4>
+            <p>L'intelligence artificielle prédictive révolutionne la maintenance informatique en anticipant les pannes avant qu'elles ne surviennent, réduisant ainsi les temps d'arrêt et optimisant les coûts.</p>
+            
+            <h4>🔍 Points clés de ma veille</h4>
+            <ul>
+              <li><strong>Surveillance proactive :</strong> Analyse en temps réel des serveurs et équipements réseau</li>
+              <li><strong>Détection d'anomalies :</strong> Identification automatique des comportements inhabituels</li>
+              <li><strong>Prévision des pannes :</strong> Algorithmes ML pour prédire les défaillances matérielles</li>
+              <li><strong>Optimisation des ressources :</strong> Planification intelligente des interventions de maintenance</li>
+            </ul>
+
+            <h4>🛠️ Applications concrètes</h4>
+            <ul>
+              <li>Surveillance des disques durs (analyse SMART)</li>
+              <li>Monitoring de la température et des performances CPU/GPU</li>
+              <li>Détection de patterns de défaillance dans les logs système</li>
+              <li>Prédiction de la durée de vie des composants</li>
+            </ul>
+
+            <h4>📚 Sources de veille</h4>
+            <ul>
+              <li>Sites spécialisés : ZDNet, Les Numériques, IT-Connect</li>
+              <li>Forums techniques : Reddit r/sysadmin, Stack Overflow</li>
+              <li>Documentation : Microsoft Docs, VMware Blog</li>
+              <li>Newsletters : Zabbix, Nagios, Datadog</li>
+            </ul>
+
+            <h4>💡 Intérêt pour mon parcours BTS SIO SISR</h4>
+            <p>Cette veille s'inscrit directement dans mes compétences en administration systèmes et réseaux. Elle me permet de rester informé sur les dernières technologies de monitoring et de maintenance préventive, essentielles pour un administrateur système moderne.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <h2>Contact</h2>
+      <p>📧 <a href="mailto:alexismessager93@gmail.com">alexismessager93@gmail.com</a></p>
+      <p>💼 <a href="#" target="_blank">LinkedIn</a> | <a href="#" target="_blank">GitHub</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Site By Alexis</p>
+  </footer>
+
+  <div id="modal" class="modal" onclick="closeModalOnBackground(event)">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalBody"></p>
+    </div>
+  </div>
+
+  <button class="scroll-top" onclick="scrollToTop()">⬆</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
