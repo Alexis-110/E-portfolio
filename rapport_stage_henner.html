@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte Rendu de Stage 2026 - MESSAGER Alexis - BTS SIO SISR</title>
+    <style>
+        :root {
+            --primary-color: #003399;
+            --primary-dark: #002266;
+            --primary-light: #e6eeef;
+            --accent-color: #00a8cc;
+            --text-main: #2c3e50;
+            --text-muted: #6c757d;
+            --bg-body: #f4f7f6;
+            --bg-card: #ffffff;
+            --bg-sidebar: #1a2530;
+            --border-color: #e0e6ed;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        body.dark-theme {
+            --primary-color: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --primary-light: #1e293b;
+            --accent-color: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-sidebar: #090d16;
+            --border-color: #334155;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Sidebar Styling */
+        aside.sidebar {
+            width: 280px;
+            background-color: var(--bg-sidebar);
+            color: #ffffff;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-header p {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            margin-top: 4px;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px 0;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav li a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            border-left: 4px solid transparent;
+            transition: var(--transition);
+        }
+
+        .sidebar-nav li a:hover,
+        .sidebar-nav li a.active {
+            color: #ffffff;
+            background-color: rgba(255,255,255,0.08);
+            border-left-color: var(--accent-color);
+        }
+
+        .sidebar-nav li a span.icon {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-footer {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Main Content Layout */
+        main.main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px;
+            max-width: 1200px;
+            width: calc(100% - 280px);
+        }
+
+        /* Top Bar Controls */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: var(--bg-card);
+            padding: 15px 25px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .search-box {
+            position: relative;
+            width: 320px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 38px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 51, 153, 0.15);
+        }
+
+        .search-box::before {
+            content: '🔍';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        .controls-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-action {
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-action:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* Banner / Header Section */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 35px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::after {
+            content: '';
+            position: absolute;
+            right: -50px;
+            bottom: -50px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .badge-institution {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.12);
+            padding: 10px 18px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .badge-logo-text {
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 15px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Content Card Sections */
+        .content-card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        body.dark-theme .section-title {
+            color: var(--accent-color);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        body.dark-theme .stat-value {
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Timeline / Level Box */
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .level-box {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            position: relative;
+        }
+
+        .level-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .level-box h4 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .level-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Accordion for Activities */
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .accordion-item {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background-color: var(--bg-card);
+            transition: var(--transition);
+        }
+
+        .accordion-header {
+            padding: 18px 24px;
+            background-color: var(--bg-card);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+            user-select: none;
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background-color: var(--bg-body);
+        }
+
+        .accordion-header .item-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .accordion-header .item-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        body.dark-theme .accordion-header .item-number {
+            background-color: var(--accent-color);
+            color: #0f172a;
+        }
+
+        .accordion-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.3s ease;
+            padding: 0 24px;
+            background-color: var(--bg-card);
+            border-top: 0 solid var(--border-color);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 2000px;
+            padding: 20px 24px 28px 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Image Gallery / Cards */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .img-card {
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            text-align: center;
+            padding: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .img-card:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .img-placeholder {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #334155;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        body.dark-theme .img-placeholder {
+            background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+            color: #cbd5e1;
+        }
+
+        .img-caption {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Code Block Styling */
+        .code-container {
+            background-color: #0f172a;
+            color: #f8fafc;
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            position: relative;
+            overflow-x: auto;
+            border: 1px solid #334155;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-copy {
+            background: #334155;
+            color: #f8fafc;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: var(--transition);
+        }
+
+        .btn-copy:hover {
+            background: var(--accent-color);
+            color: #0f172a;
+        }
+
+        /* Highlight List */
+        ul.custom-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        ul.custom-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        ul.custom-list li::before {
+            content: '➔';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        body.dark-theme ul.custom-list li::before {
+            color: var(--accent-color);
+        }
+
+        /* Modal Lightbox */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 90;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-4px);
+            background-color: var(--primary-dark);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            aside.sidebar {
+                transform: translateX(-100%);
+            }
+
+            aside.sidebar.active {
+                transform: translateX(0);
+            }
+
+            main.main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 20px;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .search-box {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-header {
+                padding: 25px;
+            }
+
+            .hero-title {
+                font-size: 1.6rem;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .controls-right {
+                justify-content: space-between;
+            }
+        }
+
+        @media print {
+            aside.sidebar, .top-bar, .scroll-top, .btn-action {
+                display: none !important;
+            }
+
+            main.main-content {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .accordion-content {
+                max-height: none !important;
+                padding: 15px !important;
+                display: block !important;
+            }
+
+            .accordion-item {
+                border: none !important;
+                margin-bottom: 20px !important;
+            }
+
+            .content-card {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>BTS SIO SISR</h2>
+            <p>Rapport de Stage 2026</p>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#hero" class="active"><span class="icon">🏠</span>Accueil</a></li>
+                <li><a href="#remerciements"><span class="icon">🤝</span>Remerciements</a></li>
+                <li><a href="#introduction"><span class="icon">📝</span>Introduction</a></li>
+                <li><a href="#entreprise"><span class="icon">🏢</span>Présentation Entreprise</a></li>
+                <li><a href="#environnement"><span class="icon">⚙️</span>Environnement DSI</a></li>
+                <li><a href="#activites"><span class="icon">🛠️</span>Activités Réalisées</a></li>
+                <li><a href="#conclusion"><span class="icon">🎯</span>Conclusion</a></li>
+                <li><a href="#annexes"><span class="icon">📁</span>Annexes</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p><strong>Groupe Henner</strong> - DSI</p>
+            <p>Alexis MESSAGER</p>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+        <!-- Top Bar Controls -->
+        <div class="top-bar">
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">☰</button>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Rechercher une activité, un outil...">
+            </div>
+            <div class="controls-right">
+                <button class="btn-action" id="themeToggle"><span id="themeIcon">🌙</span> <span id="themeText">Sombre</span></button>
+                <button class="btn-action" onclick="window.print()"><span class="icon">🖨️</span> Imprimer</button>
+            </div>
+        </div>
+
+        <!-- Hero Header -->
+        <header class="hero-header" id="hero">
+            <div class="header-top">
+                <div class="badge-institution">
+                    <span class="badge-logo-text">LYCÉE TURGOT PARIS (1839)</span>
+                </div>
+                <div class="badge-institution">
+                    <span class="badge-logo-text">GROUPE HENNER - HERE TO CARE</span>
+                </div>
+            </div>
+            <h1 class="hero-title">Compte Rendu de Stage 2026</h1>
+            <div class="hero-meta">
+                <div class="hero-meta-item"><span>👤</span> <strong>Étudiant :</strong> MESSAGER Alexis</div>
+                <div class="hero-meta-item"><span>🎓</span> <strong>Formation :</strong> BTS SIO SISR (1ère année)</div>
+                <div class="hero-meta-item"><span>📅</span> <strong>Période :</strong> Du 8 mai 2026 au 3 juillet 2026</div>
+                <div class="hero-meta-item"><span>⏳</span> <strong>Durée :</strong> 8 semaines</div>
+            </div>
+        </header>
+
+        <!-- Sommaire Card -->
+        <section class="content-card">
+            <h2 class="section-title">📌 Sommaire</h2>
+            <ul class="custom-list">
+                <li><a href="#remerciements" style="color: inherit; text-decoration: none;">Remerciements et introduction</a></li>
+                <li><a href="#entreprise" style="color: inherit; text-decoration: none;">Présentation de l’entreprise</a></li>
+                <li><a href="#environnement" style="color: inherit; text-decoration: none;">Environnement technologique et organisationnel</a></li>
+                <li><a href="#activites" style="color: inherit; text-decoration: none;">Présentation des 10 activités réalisées</a></li>
+                <li><a href="#conclusion" style="color: inherit; text-decoration: none;">Conclusion & compétences BTS SISR</a></li>
+                <li><a href="#annexes" style="color: inherit; text-decoration: none;">Annexes et captures d'écran</a></li>
+            </ul>
+        </section>
+
+        <!-- Remerciements Section -->
+        <section class="content-card searchable-section" id="remerciements">
+            <h2 class="section-title">🤝 Remerciements</h2>
+            <p>Je tiens tout d’abord à remercier l’ensemble du <strong>Groupe Henner</strong> pour m’avoir accueilli durant ces 8 semaines de stage au sein de la Direction des Systèmes d’Information (DSI).</p>
+            <br>
+            <p>Je souhaite exprimer ma reconnaissance à <strong>Alexandre Barbaud</strong>, mon responsable de stage, pour la confiance accordée lors de mon intégration au sein des équipes.</p>
+            <br>
+            <p>Un remerciement tout particulier à mon tuteur, <strong>Claude Ahovey</strong>, pour son accompagnement, ses conseils au quotidien et le temps consacré à ma formation tout au long de cette période.</p>
+            <br>
+            <p>Je remercie également l'ensemble de l’équipe du support de proximité : <strong>Christophe, Alexis, Haingo</strong>, ainsi que <strong>Jessy</strong>, également étudiante en BTS SIO SISR, pour leur accueil chaleureux, leur entraide et les échanges partagés sur nos formations respectives.</p>
+            <br>
+            <p>Enfin, je remercie les collaborateurs des différentes équipes de la DSI avec qui j’ai eu l’occasion de collaborer régulièrement — notamment l’équipe <strong>Projet</strong>, le <strong>Support N3</strong>, l’équipe <strong>Administration Réseau</strong> et les <strong>Ckops</strong>. Leurs explications et leur disponibilité m’ont permis d'avoir une vision globale du fonctionnement d’une infrastructure informatique en entreprise.</p>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="content-card searchable-section" id="introduction">
+            <h2 class="section-title">📝 Introduction</h2>
+            <p>Dans le cadre de ma première année de <strong>BTS SIO (Solutions d’Infrastructure, Systèmes et Réseaux - SISR)</strong>, j’ai réalisé un stage d’une durée de 8 semaines, du mois de mai au mois de juillet 2026, au sein du Groupe Henner.</p>
+            <br>
+            <p>Le Groupe Henner est une entreprise spécialisée dans la protection sociale et le conseil en assurances, comptant plusieurs milliers de collaborateurs. Pour assurer le bon fonctionnement de ses activités quotidiennes, l'entreprise s'appuie sur une infrastructure informatique complexe et un service DSI réactif.</p>
+            <br>
+            <p>J'ai été intégré au service <strong>Support N2</strong>, qui constitue le point d'entrée principal pour la résolution des problèmes informatiques des collaborateurs et le maintien en condition opérationnelle du parc matériel et logiciel. Ce poste nécessite non seulement des compétences techniques, mais aussi un bon sens du relationnel et une capacité d'adaptation.</p>
+            <br>
+            <p>L'objectif principal de ce stage était de mettre en pratique les connaissances théoriques acquises en formation (gestion du parc, résolution d'incidents, administration des accès) tout en découvrant le fonctionnement réel d'une DSI d'envergure. Au-delà des missions de support habituelles, ma position m'a amené à interagir directement avec d'autres pôles plus spécialisés (Support N3, Réseaux, Projets, Ckops), ce qui m'a offert une vue d'ensemble du traitement d'un problème, depuis sa prise en charge initiale jusqu'à son escalade si nécessaire.</p>
+            <br>
+            <p>Ce rapport présente ainsi le contexte de mon stage, les missions que j'ai exécutées au quotidien au sein du support, ainsi que les enseignements techniques et professionnels que j'en ai retirés pour la suite de mon parcours en SISR.</p>
+        </section>
+
+        <!-- Présentation de l'Entreprise -->
+        <section class="content-card searchable-section" id="entreprise">
+            <h2 class="section-title">🏢 Présentation de l’entreprise</h2>
+            <p>Mon stage s’est déroulé au sein d’une entreprise multinationale, le <strong>Groupe Henner</strong>. Fondée en 1947 par Ernest Duffo, cette société s’est initialement spécialisée dans la garantie chirurgicale avant de devenir un courtier de référence dans le domaine de la protection sociale collective.</p>
+            <br>
+            <p>Aujourd’hui, le Groupe Henner propose un ensemble de solutions en assurance de personnes : santé, prévoyance, garantie obsèques, épargne salariale, actionnariat salarié, expertise médicale et réseaux de soins.</p>
+
+            <h3 style="margin-top: 25px; margin-bottom: 15px; font-size: 1.15rem; color: var(--primary-color);">Chiffres clés (Année 2025) :</h3>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">267,1 M€</div>
+                    <div class="stat-label">Chiffre d'Affaires</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">2,8 Md€</div>
+                    <div class="stat-label">Primes Gérées</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">2,5 M</div>
+                    <div class="stat-label">Bénéficiaires</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">2 000</div>
+                    <div class="stat-label">Collaborateurs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">62 000</div>
+                    <div class="stat-label">Entreprises Clientes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">21 Pays</div>
+                    <div class="stat-label">Implantations Directes</div>
+                </div>
+            </div>
+
+            <p>Le groupe accompagne 62 000 entreprises de toutes tailles, dont <strong>80 % des sociétés du CAC 40</strong> — parmi lesquelles LVMH, Dior, Stellantis, TotalEnergies, BIC ou encore Société Générale.</p>
+            <br>
+            <p>Le Groupe Henner est implanté dans 21 pays à travers le monde, avec des ouvertures notables à Singapour (1999), en Suisse (2001), au Kenya (2007), aux États-Unis (2011) et à Hong Kong (2012), et s’appuie sur un réseau de <strong>1,8 million de professionnels de santé</strong> répartis dans 185 pays.</p>
+            
+            <div class="image-gallery" style="margin-top:20px;">
+                <div class="img-card" onclick="openModal('Carte de l'implantation internationale du Groupe Henner')">
+                    <div class="img-placeholder">🗺️ Carte de l’implantation internationale du Groupe Henner</div>
+                    <div class="img-caption">Implantation mondiale dans 21 pays</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Environnement technologique et organisationnel -->
+        <section class="content-card searchable-section" id="environnement">
+            <h2 class="section-title">⚙️ Environnement technologique et organisationnel</h2>
+            <p>La Direction des Systèmes d'Information (DSI) du Groupe Henner garantit le maintien en condition opérationnelle et la modernisation des outils informatiques pour l'ensemble des collaborateurs en France et à l'international. Au sein de cette structure, le <strong>Support de Niveau 2 (N2)</strong> occupe une place charnière : il assure la résolution des incidents complexes, le traitement des demandes de proximité et l'administration quotidienne du parc informatique.</p>
+
+            <h3 style="margin-top: 25px; margin-bottom: 15px; color: var(--primary-color);">Niveaux d'intervention de la DSI :</h3>
+            <div class="level-grid">
+                <div class="level-box">
+                    <span class="level-badge">NIVEAU 1</span>
+                    <h4>Helpdesk</h4>
+                    <p>Prise en charge initiale, qualification des demandes, dépannage rapide et réorientation des tickets complexes.</p>
+                </div>
+                <div class="level-box" style="border-color: var(--primary-color);">
+                    <span class="level-badge" style="background: var(--accent-color); color:#000;">NIVEAU 2 (Périmètre Stage)</span>
+                    <h4>Support de proximité & Expertise</h4>
+                    <p>Traitement des incidents escaladés par le N1, diagnostic approfondi, préparation du matériel et administration des droits d'accès.</p>
+                </div>
+                <div class="level-box">
+                    <span class="level-badge">NIVEAU 3</span>
+                    <h4>Ingénierie & Infrastructures</h4>
+                    <p>Équipes spécialisées (Réseau, Sécurité, Serveurs, Applicatif métier) sollicitées en dernier recours pour les dysfonctionnements majeurs.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--primary-color);">Gestion ITSM via ServiceNow :</h3>
+            <p>L'ensemble des activités du support est tracé et géré au travers de la plateforme ITSM <strong>ServiceNow</strong> :</p>
+            <ul class="custom-list">
+                <li><strong>Distinction Incidents / Demandes :</strong> ServiceNow sépare strictement le traitement des pannes (incidents) des requêtes de matériel, de logiciels ou d'accès (demandes de service RITM).</li>
+                <li><strong>Respect des Engagements de Service (SLA) :</strong> Attribution d'un niveau de priorité selon l'urgence et l'impact métier pour veiller au respect des délais de résolution.</li>
+                <li><strong>Lien avec la CMDB :</strong> Rapprochement direct de chaque ticket aux composants de l'infrastructure (poste de travail, écran, compte utilisateur).</li>
+                <li><strong>Base de connaissances (Knowledge Base) :</strong> Hébergement des procédures techniques formalisées pour standardiser les modes opératoires.</li>
+            </ul>
+
+            <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--primary-color);">Infrastructure d'administration majeure :</h3>
+            <div class="level-grid">
+                <div class="level-box">
+                    <h4>Active Directory (AD DS)</h4>
+                    <p><strong>Gestion des identités et accès :</strong> Création et configuration des comptes, attribution de la messagerie, attribution de rôles RBAC, et gestion des Stratégies de Groupe (GPO).</p>
+                </div>
+                <div class="level-box">
+                    <h4>Microsoft Intune (MDM / Autopilot)</h4>
+                    <p><strong>Gestion moderne du parc (Modern Workplace) :</strong> Masterisation automatisée via Autopilot, télédistribution des applications et déploiement des profils de sécurité (BitLocker).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activités Réalisées -->
+        <section class="content-card searchable-section" id="activites">
+            <h2 class="section-title">🛠️ Présentation des activités réalisées</h2>
+            <p style="margin-bottom: 20px;">Retrouvez ci-dessous le détail des 10 activités majeures effectuées durant le stage. Cliquez sur une activité pour dérouler sa fiche technique complète.</p>
+
+            <div class="accordion">
+
+                <!-- Activité 1 -->
+                <div class="accordion-item searchable-item">
+                    <div class="accordion-header">
+                        <div class="item-title">
+                            <span class="item-number">1</span>
+                            <span>Arrivée d’un nouveau collaborateur (workflow d’arrivée)</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Cette activité constitue un point central des missions de l’équipe N2 Support. L’équipe ASSET prépare le matériel nécessaire à la suite des demandes formulées par les RH. Le matériel nous est remis dans un sac à dos étiqueté avec le nom, le prénom, la date d’arrivée et le numéro de RITM ServiceNow.</p>
+                        <br>
+                        <p><strong>Contenu du sac :</strong> PC portable DELL (gammes « Turquoise », « Ciel », ou « Orange » selon le profil métier), casque JABRA/DELL, filtre de confidentialité, câble antivol et chargeur. L’ensemble est tracé nominativement dans ServiceNow et l'application « Ma Fiche Matériel ».</p>
+                        <br>
+                        <p><strong>Procédure technique de préparation :</strong></p>
+                        <ol style="margin-left: 20px; margin-top: 10px;">
+                            <li>Attribution d'un mot de passe temporaire dans Active Directory après recherche du compte.</li>
+                            <li>Démarrage de l'installation Windows 11 Pro.</li>
+                            <li>Appui à 5 reprises sur la touche Windows pour déclencher l'option <strong>« Pré-Approvisionnement » (Windows Autopilot)</strong>. Durée : ~50 min.</li>
+                            <li>Contrôle de la version du BIOS (mise à jour recommandée si antérieure à 08/2025) + Windows Update.</li>
+                            <li>Vérification du déploiement des agents de sécurité : <strong>Netskope</strong> (solution VPN/Cloud remplaçant Harmony) et <strong>CrowdStrike</strong> (antivirus).</li>
+                            <li>Validation des accès Teams, Outlook, Word, lecteurs réseau « G » et « Y », et synchro OneDrive.</li>
+                        </ol>
+                        <br>
+                        <p><strong>Onboarding le Jour J :</strong> Accueil du collaborateur avec son manager au Kiosque, configuration guidée de l'Authentification Multi-Facteurs (MFA obligatoire depuis juin 2026), et clôture du ticket RITM sur ServiceNow.</p>
+                        
+                        <div class="image-gallery">
+                            <div class="img-card" onclick="openModal('Étiquette RITM et Sac à dos')">
+                                <div class="img-placeholder">🏷️ Étiquette RITM (Samuel Sorena 1/7)</div>
+                                <div class="img-caption">Suivi de préparation RITM</div>
+                            </div>
+                            <div class="img-card" onclick="openModal('Équipements DELL & Accessoires')">
+                                <div class="img-placeholder">💻 PC Portable DELL & Accessoires</div>
+                                <div class="img-caption">PC Dell, Antivol, Filtre, Casque Jabra</div>
+                            </div>
+                            <div class="img-card" onclick="openModal('Console Active Directory')">
+                                <div class="img-placeholder">🔑 Active Directory - Reinitialisation</div>
+                                <div class="img-caption">Recherche & Reset mot de passe</div>
+                            </div>
+                            <div class="img-card" onclick="openModal('Menu Autopilot')">
+                                <div class="img-placeholder">⚡ Windows Autopilot Pre-provision</div>
+                                <div class="img-caption">Pré-approvisionnement Autopilot</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activité 2 -->
+                <div class="accordion-item searchable-item">
+                    <div class="accordion-header">
+                        <div class="item-title">
+                            <span class="item-number">2</span>
+                            <span>Décommissionnement serveurs Avaya au DataCenter EQUINIX (Courbevoie)</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Dans le cadre de la modernisation de l’infrastructure télécom et de l’optimisation des coûts IT, le Groupe Henner a engagé depuis février 2025 la migration progressive de sa téléphonie Avaya vers la solution CCaaS Cloud <strong>Diabolocom</strong>.</p>
+                        <br>
+                        <p><strong>Objectifs clés du projet :</strong></p>
+                        <ul class="custom-list">
+                            <li>Retrait progressif des téléphones fixes IP de bureau au profit d'un usage 100% softphone.</li>
+                            <li>Migration vers l'interface Diabolocom intégrée aux outils métiers.</li>
+                            <li>Retrait physique des équipements téléphoniques obsolètes.</li>
+                        </ul>
+                        <br>
+                        <p><strong>Intervention sur site :</strong> Je me suis rendu au DataCenter Equinix de Courbevoie aux côtés de Franck (Administrateur Réseau) afin de procéder au débranchement physique et à la déconnexion de deux modules serveurs Avaya. Nous avons ensuite contrôlé sur la supervision <strong>PRTG</strong> que leur statut est bien passé en HORS SERVICE, libérant ainsi des baies et réduisant l'empreinte énergétique.</p>
+                        
+                        <div class="image-gallery">
+                            <div class="img-card" onclick="openModal('Serveurs Avaya au Datacenter EQUINIX')">
+                                <div class="img-placeholder">🖥️ Baies Serveurs Avaya Equinix</div>
+                                <div class="img-caption">Déconnexion physique & vérification PRTG</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activité 3 -->
+                <div class="accordion-item searchable-item">
+                    <div class="accordion-header">
+                        <div class="item-title">
+                            <span class="item-number">3</span>
+                            <span>Maintien en condition opérationnelle des salles Poly (HP) & Cisco Meraki</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Les salles de visioconférence du siège sont équipées de l’écosystème Poly (HP) : barre vidéo supérieure, tablette tactile de contrôle sur table avec micro, et tablette externe de réservation. Voici 4 exemples de dépannages réalisés :</p>
+                        <br>
+                        <div class="level-grid">
+                            <div class="level-box">
+                                <strong>1. Panne d'Alimentation PoE :</strong>
+                                <p>Tablette de table éteinte. Diagnostic du câblage RJ45 sous la table : connecteur endommagé. Remplacement du câble réseau, vérification de la télé-alimentation PoE et rangement sous gaine.</p>
+                            </div>
+                            <div class="level-box">
+                                <strong>2. Désynchronisation Caméra-Tablette :</strong>
+                                <p>Image figée et écran tactile figé. Redémarrage électrique forcé de la barre Poly, réinitialisation du service tablette et réappairage de la liaison vidéo.</p>
+                            </div>
+                            <div class="level-box">
+                                <strong>3. Mauvais VLAN sur Cisco Meraki :</strong>
+                                <p>Erreur de synchro caméra. Analyse du port switch sur le dashboard Meraki avec un administrateur réseau : port réaffecté par erreur sur le VLAN général. Correction vers le VLAN Visio/VoIP et renouvellement bail DHCP.</p>
+                            </div>
+                            <div class="level-box">
+                                <strong>4. Conflit IP & Blocage NAC (Cisco ISE) :</strong>
+                                <p>Caméra hors-ligne. Récupération de l'adresse MAC. Analyse dans Cisco ISE : conflit IP déclenchant une alerte de sécurité et le blocage automatique par le NAC. Libération du conflit IP et déblocage de l'adresse MAC dans Cisco ISE.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activité 4 -->
+                <div class="accordion-item searchable-item">
+                    <div class="accordion-header">
+                        <div class="item-title">
+                            <span class="item-number">4</span>
+                            <span>Suivi thermique de crise des salles serveurs (Panne de Climatisation)</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Lors d'un épisode de canicule extrême (40°C à 42°C extérieurs), une panne majeure de la climatisation centrale a impacté le bâtiment pendant une semaine. Le siège hébergeant 5 salles serveurs (étages 0, 2, 4, 5 et 8) contenant les switchs de brassage réseau et le stockage Cloud, une procédure de suivi de crise a été déployée.</p>
+                        <br>
+                        <p><strong>Procédure de contrôle :</strong> Réalisation de relevés thermiques manuels toutes les 3 heures à l'aide d'une sonde portative. 3 points de mesure par salle : avant de baie, arrière de baie et centre de la pièce.</p>
+                        <br>
+                        <p><strong>Bilan et Analyse des données :</strong></p>
+                        <ul class="custom-list">
+                            <li><strong>Salles Étages 2 et 5 :</strong> Climatisation autonome fonctionnelle → Températures stables à 24°C.</li>
+                            <li><strong>Salles Étages 0, 4 et 8 :</strong> Impactées par la panne → Montée des températures entre 35°C et 39°C.</li>
+                        </ul>
+                        <p>Le seuil critique d'extinction automatique (thermal shutdown) étant fixé à 40°C par les constructeurs, la traçabilité rigoureuse a permis de constater la stabilisation des températures sous ce seuil critique, évitant un arrêt d'urgence des infrastructures.</p>
+                    </div>
+                </div>
+
+                <!-- Activité 5 -->
+                <div class="accordion-item searchable-item">
+                    <div class="accordion-header">
+                        <div class="item-title">
+                            <span class="item-number">5</span>
+                            <span>Audit et modernisation des salles de visioconférence (Accompagnement Wipple)</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Participation à un audit technique complet des 3 salles de réunion principales du siège avec l'équipe Projet, le Responsable Support N2 et un ingénieur d'affaires du prestataire Wipple.</p>
+                        <br>
+                        <p><strong>Les 4 axes de l'étude :</strong></p>
+                        <ol style="margin-left: 20px;">
+                            <li><strong>Affichage :</strong> Calcul de la taille d'écran idéale, de la luminosité et du recul visuel.</li>
+                            <li><strong>Réservation :</strong> Emplacement des tablettes tactiles murales interconnectées à l'agenda Microsoft 365 Outlook.</li>
+                            <li><strong>Captation :</strong> Cadrage intelligent des caméras (auto-tracking) et couverture audio par micros d'ambiance.</li>
+                            <li><strong>Cable Management :</strong> Intégration invisible de la connectique dans les nourrices de table et cloisons.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Activité 6 -->
+                <div class="accordion-item searchable-item">
+                    <div class="accordion-header">
+                        <div class="item-title">
+                            <span class="item-number">6</span>
+                            <span>Reconditionnement et masterisation des iPhone (Apple Configurator / ABM)</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Gestion du cycle de vie de la flotte mobile lors des départs et arrivées des cadres dirigeants et managers.</p>
+                        <br>
+                        <p><strong>Procédure de reconditionnement :</strong></p>
+                        <ul class="custom-list">
+                            <li>Raccordement filaire de l'iPhone sur poste Mac dédié.</li>
+                            <li>Restauration d'usine complète (Wipe) via <strong>Apple Configurator</strong> pour effacer les données et réinstaller la dernière version d'iOS.</li>
+                            <li>Enrôlement MDM automatique via <strong>Apple Business Manager (ABM)</strong> : application des profils de sécurité Henner, suppression du verrouillage iCloud personnel et télédistribution des applications d'entreprise.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Activité 7 -->
+                <div class="accordion-item searchable-item">
+                    <div class="accordion-header">
+                        <div class="item-title">
+                            <span class="item-number">7</span>
+                            <span>Maintenance préventive et curatives du matériel PC</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Opération de rénovation thermique et matérielle sur un ordinateur portable d'entreprise afin d'éviter le bridage thermique (thermal throttling) et prolonger la durée de vie de l'équipement :</p>
+                        <br>
+                        <ol style="margin-left:20px;">
+                            <li>Déconnexion de la batterie et ouverture du châssis.</li>
+                            <li>Dépoussiérage des ventilateurs et caloducs à la bombe d'air sec.</li>
+                            <li>Nettoyage de l'ancienne pâte thermique séchée au niveau du CPU/GPU à l'alcool isopropylique.</li>
+                            <li>Application d'une nouvelle pâte thermique haute conductivité.</li>
+                            <li>Remontage et stress-tests de montée en température sous charge.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Activité 8 -->
+                <div class="accordion-item searchable-item">
+                    <div class="accordion-header">
+                        <div class="item-title">
+                            <span class="item-number">8</span>
+                            <span>Intervention curative : Déploiement manuel de BIOS critiques</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>À la suite d'un dysfonctionnement de script lors d'un déploiement automatique à distance, environ 50 ordinateurs n'avaient pas reçu la mise à jour de BIOS requise.</p>
+                        <br>
+                        <p>Accompagné de techniciens support, j’ai contacté les collaborateurs pour planifier un passage au Kiosque N2. Chaque poste a été branché sur secteur pour effectuer un flashage manuel sécurisé du BIOS, suivi d'une vérification de version au redémarrage.</p>
+                    </div>
+                </div>
+
+                <!-- Activité 9 -->
+                <div class="accordion-item searchable-item">
+                    <div class="accordion-header">
+                        <div class="item-title">
+                            <span class="item-number">9</span>
+                            <span>Enrôlement de PC portables neufs (PowerShell / Intune / Autopilot)</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Lors de la mise en service d'un PC neuf ou après un changement de carte mère, le PC doit être inscrit dans l'environnement Microsoft Intune de l'entreprise.</p>
+                        <br>
+                        <p><strong>1. Extraction du Hardware Hash via script PowerShell :</strong></p>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>PowerShell</span>
+                                <button class="btn-copy" onclick="copyCode(this)">Copier</button>
+                            </div>
+                            <code>Get-WindowsAutoPilotInfo.ps1 -OutputFile c:\hash.csv</code>
+                        </div>
+                        <br>
+                        <p><strong>2. Importation dans Intune :</strong> Navigation dans <i>Appareils > Windows > Inscription Windows > Appareils</i>, puis import du fichier <code>hash.csv</code>.</p>
+                        <br>
+                        <p><strong>3. Attribut de jointure Hybride :</strong> Saisie du numéro de série et attribution de l'étiquette <code>HYB</code> (Jointure Hybride Active Directory + Entra ID).</p>
+                    </div>
+                </div>
+
+                <!-- Activité 10 -->
+                <div class="accordion-item searchable-item">
+                    <div class="accordion-header">
+                        <div class="item-title">
+                            <span class="item-number">10</span>
+                            <span>Assistance utilisateurs et résolution d'incidents au quotidien</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Support de proximité et résolution des demandes et pannes du quotidien :</p>
+                        <br>
+                        <ul class="custom-list">
+                            <li><strong>Matériel :</strong> Remplacement et réassociation des périphériques (souris, claviers, dongles USB), dépannage casques audio, remplacement câbles HDMI, écrans et docks Dell défectueux.</li>
+                            <li><strong>Logiciel :</strong> Dépannage des blocages Microsoft Teams et Outlook par vidage des caches applicatifs (AppData) ou réinstallation propre via le Portail d'Entreprise.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="content-card searchable-section" id="conclusion">
+            <h2 class="section-title">🎯 Conclusion & Bilan BTS SISR</h2>
+            <p>Cette période passée au sein de l'équipe informatique du Groupe Henner m'a permis d'intervenir sur l'ensemble de la chaîne d'infrastructure, de la maintenance matérielle de proximité jusqu'à l'administration des services Cloud de l'entreprise.</p>
+            <br>
+            <p>À travers la participation au projet de décommissionnement de l'architecture téléphonique Avaya au profit de la solution CCaaS Diabolocom, j'ai pu appréhender les enjeux concrets de la transformation digitale du SI : simplification du réseau, suppression de la dette technique matérielle en datacenter et optimisation des coûts d'exploitation.</p>
+            <br>
+            <p>En parallèle, mes interventions sur le parc informatique — qu'il s'agisse du maintien en condition opérationnelle des salles de visioconférence Poly/Meraki, du suivi de crise thermique lors d'épisodes caniculaires, ou de la gestion du cycle de vie des équipements (reconditionnement des iPhone avec Apple Configurator, enrôlement Autopilot/Intune via PowerShell, maintenance préventive et support utilisateur) — m'ont permis de renforcer mon autonomie, ma méthodologie de diagnostic et ma compréhension des architectures hybrides.</p>
+            <br>
+            <p>L'ensemble de ces missions s'inscrit en parfaite corrélation avec le <strong>référentiel du BTS SIO option SISR</strong>. Elles couvrent directement les compétences clés du parcours :</p>
+            <ul class="custom-list">
+                <li>Gérer le patrimoine informatique.</li>
+                <li>Répondre aux incidents et aux demandes d'assistance et d’évolution.</li>
+                <li>Développer la présence en ligne de l’organisation et accompagner les utilisateurs.</li>
+                <li>Travailler en mode projet et maintenir en condition opérationnelle les infrastructures réseaux et systèmes.</li>
+            </ul>
+        </section>
+
+        <!-- Annexes -->
+        <section class="content-card searchable-section" id="annexes">
+            <h2 class="section-title">📁 Annexes</h2>
+            <p>Captures d'écran et schémas explicatifs documentés durant le stage :</p>
+
+            <div class="image-gallery">
+                <div class="img-card" onclick="openModal('Schéma d'interconnexion Salle Visioconférence Poly')">
+                    <div class="img-placeholder">📐 Schéma Salle Réunion Poly / Meraki</div>
+                    <div class="img-caption">Câblage & Switches</div>
+                </div>
+                <div class="img-card" onclick="openModal('Procédure d'enrôlement Intune / Autopilot')">
+                    <div class="img-placeholder">💻 Inscription Appareil Intune / HYB</div>
+                    <div class="img-caption">Import Hash PowerShell</div>
+                </div>
+                <div class="img-card" onclick="openModal('Baies de brassage DataCenter Equinix')">
+                    <div class="img-placeholder">🏢 DataCenter Equinix Courbevoie</div>
+                    <div class="img-caption">Salles Serveurs</div>
+                </div>
+                <div class="img-card" onclick="openModal('Interface ServiceNow ITSM')">
+                    <div class="img-placeholder">🎫 ServiceNow ITSM Tickets</div>
+                    <div class="img-caption">Incidents & RITM</div>
+                </div>
+                <div class="img-card" onclick="openModal('Active Directory Users and Computers')">
+                    <div class="img-placeholder">👥 Active Directory DS</div>
+                    <div class="img-caption">Gestion Comptes & GPO</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Lightbox Component -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" style="margin-bottom:15px; color: var(--primary-color);">Titre Document</h3>
+            <div id="modalBody" style="font-size:0.95rem; color: var(--text-muted); padding:20px 0;">
+                Aperçu du document d'illustration.
+            </div>
+            <button class="btn-action" onclick="closeModal()">Fermer</button>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">▲</div>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        // DOM Elements
+        const mobileToggle = document.getElementById('mobileToggle');
+        const sidebar = id('sidebar');
+        const themeToggle = id('themeToggle');
+        const themeIcon = id('themeIcon');
+        const themeText = id('themeText');
+        const searchInput = id('searchInput');
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        const scrollTopBtn = id('scrollTop');
+
+        function id(e) { return document.getElementById(e); }
+
+        // Mobile Sidebar Toggle
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+        }
+
+        // Dark / Light Theme Toggle
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            themeIcon.textContent = isDark ? '☀️' : '🌙';
+            themeText.textContent = isDark ? 'Clair' : 'Sombre';
+        });
+
+        // Accordion Interaction
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Search Filter
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const searchableItems = document.querySelectorAll('.searchable-item');
+
+            searchableItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'block';
+                    if (query.length > 2) {
+                        item.classList.add('active');
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Copy Code Snippet
+        function copyCode(btn) {
+            const code = btn.parentElement.nextElementSibling.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = btn.textContent;
+                btn.textContent = 'Copié !';
+                btn.style.backgroundColor = '#22c55e';
+                btn.style.color = '#ffffff';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.backgroundColor = '#334155';
+                    btn.style.color = '#f8fafc';
+                }, 2000);
+            });
+        }
+
+        // Modal Lightbox
+        function openModal(title) {
+            id('modalTitle').textContent = title;
+            id('modalBody').innerHTML = `
+                <div style="padding: 30px; background: var(--bg-body); border-radius: 8px; border: 2px dashed var(--border-color);">
+                    <p style="font-size:2.5rem; margin-bottom:10px;">🖼️</p>
+                    <p><strong>${title}</strong></p>
+                    <p style="font-size:0.85rem; margin-top:5px;">Capture d'écran intégrée à la documentation de stage Henner.</p>
+                </div>
+            `;
+            id('imageModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            id('imageModal').style.display = 'none';
+        }
+
+        // Scroll to Top & Active Link Highlight
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+
+            // Scrollspy logic
+            const sections = document.querySelectorAll('section, header');
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
