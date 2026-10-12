@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ePortfolio - Alexis Messager | BTS SIO SISR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Sans JavaScript : les sections doivent rester visibles -->
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Sprite SVG : logo Cisco défini une seule fois, réutilisé par les 4 certifications -->
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <g id="cisco-bars">
+        <rect x="5" y="18" width="6" height="12" rx="1"/>
+        <rect x="17" y="12" width="6" height="18" rx="1"/>
+        <rect x="29" y="6" width="6" height="24" rx="1"/>
+        <rect x="41" y="12" width="6" height="18" rx="1"/>
+        <rect x="53" y="0" width="6" height="30" rx="1"/>
+        <rect x="65" y="12" width="6" height="18" rx="1"/>
+        <rect x="77" y="6" width="6" height="24" rx="1"/>
+        <rect x="89" y="18" width="6" height="12" rx="1"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- Animated blue background -->
+  <div class="bg-canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
+  </div>
+
+  <header>
+    <div class="logo">Alexis Messager</div>
+    <nav>
+      <a href="#about">À propos</a>
+      <a href="#competences">Compétences</a>
+      <a href="#formations">Formations</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#projets">Projets</a>
+      <a href="#stages">Stages</a>
+      <a href="#veille">Veille</a>
+      <a href="#contact" class="btn small">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Alexis <span class="gradient">Messager</span></h1>
+      <p class="subtitle">Étudiant BTS SIO SISR | Spécialiste en Infrastructures &amp; Réseaux</p>
+      <div class="cta">
+        <button type="button" class="btn" data-modal="Contact">Contactez-moi</button>
+        <button type="button" class="btn outline" data-scroll="projets">Voir mes projets</button>
+        <a href="tableau.pdf" target="_blank" rel="noopener" class="btn outline">Tableau de Synthèse</a>
+        <a href="CV_MESSAGER_Alexis.pdf" target="_blank" rel="noopener" class="btn outline">Mon CV</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Anneaux de données rotatifs -->
+      <div class="orbital-ring ring-1"></div>
+      <div class="orbital-ring ring-2"></div>
+
+      <!-- Noyau central lumineux -->
+      <div class="core-element">
+        <div class="glowing-core"></div>
+      </div>
+
+      <!-- Modules / Icônes informatique flottants -->
+      <div class="floating-module mod-1" title="Serveur">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+      </div>
+      <div class="floating-module mod-2" title="Réseau">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
+      </div>
+      <div class="floating-module mod-3" title="Sécurité &amp; GPO">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="floating-module mod-4" title="Terminal &amp; Shell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      </div>
+      <div class="floating-module mod-5" title="Base de données &amp; Cloud">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="about" class="reveal">
+      <h2>À propos</h2>
+      <p>
+        Étudiant investi en Systèmes, Infrastructures et Réseaux, je combine une forte capacité d'apprentissage avec une volonté constante d'innover. Orienté vers les résultats concrets, je m'épanouis dans la mise en œuvre et la création de solutions techniques tangibles. Mon excellent esprit d'équipe me permet de m'intégrer rapidement au sein de projets collectifs pour transformer des défis techniques en réussites opérationnelles.
+      </p>
+    </section>
+
+    <section id="competences" class="reveal">
+      <h2>Compétences</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>💻 Développement Web</h3>
+          <div class="skills-list">
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>🖥️ Systèmes &amp; Virtualisation</h3>
+          <div class="skills-list">
+            <span class="skill-tag">VirtualBox</span>
+            <span class="skill-tag">Administration VM</span>
+            <span class="skill-tag">Configuration Systèmes</span>
+            <span class="skill-tag">Proxmox VE</span>
+            <span class="skill-tag">Clustering Proxmox</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>🌐 Réseaux</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Cisco Packet Tracer</span>
+            <span class="skill-tag">Configuration Réseau</span>
+            <span class="skill-tag">Architecture Réseau</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>🐧 Administration Linux (Ubuntu)</h3>
+          <div class="skills-list">
+            <span class="skill-tag">WordPress</span>
+            <span class="skill-tag">GLPI</span>
+            <span class="skill-tag">Agent GLPI</span>
+            <span class="skill-tag">OCS Inventory</span>
+            <span class="skill-tag">Import BDD</span>
+            <span class="skill-tag">Fail2ban</span>
+            <span class="skill-tag">Sécurité SSH</span>
+            <span class="skill-tag">Administration serveur</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>🔐 Infrastructure Entreprise</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Active Directory + GPO</span>
+            <span class="skill-tag">Microsoft Intune</span>
+            <span class="skill-tag">ServiceNow</span>
+            <span class="skill-tag">Gestion de Parc</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="formations" class="reveal">
+      <h2>Formations</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Bac Pro en Système Numérique</h3>
+          <p class="card-date">Lycée Lasalle St-Denis (2022–2025)</p>
+          <p class="card-detail">Mention Très Bien</p>
+        </div>
+        <div class="card">
+          <h3>BTS Services Informatiques aux Organisations</h3>
+          <p class="card-date">Pôle supérieur Turgot (2025–2027)</p>
+          <p class="card-detail">Spécialité SISR</p>
+        </div>
+        <div class="card">
+          <h3>Collège</h3>
+          <p class="card-date">Collège Privé Notre-Dame Providence</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="reveal">
+      <h2>Certifications</h2>
+      <div class="certifications-grid">
+        <div class="certification-card">
+          <div class="cert-badge cisco-blue">
+            <div class="cert-header">
+              <svg class="cisco-svg" viewBox="0 0 100 40" fill="currentColor" aria-hidden="true"><use href="#cisco-bars" xlink:href="#cisco-bars"/></svg>
+              <div class="cert-titles">
+                <span class="cisco-logo-text">CISCO</span>
+                <span class="networking-academy">Networking Academy</span>
+              </div>
+            </div>
+            <div class="verified-badge">Verified</div>
+            <div class="cert-waves blue-waves"></div>
+            <div class="cert-title">Computer Hardware Basics</div>
+          </div>
+          <div class="cert-info">
+            <a href="https://www.credly.com/badges/cb7bc615-512a-4272-97a5-005c4af1ce9b/public_url" target="_blank" rel="noopener"><h3>Notions de base en matériel informatique</h3></a>
+            <p class="cert-issuer">🏢 Cisco Networking Academy</p>
+          </div>
+        </div>
+
+        <div class="certification-card">
+          <div class="cert-badge cisco-green">
+            <div class="cert-header">
+              <svg class="cisco-svg" viewBox="0 0 100 40" fill="currentColor" aria-hidden="true"><use href="#cisco-bars" xlink:href="#cisco-bars"/></svg>
+              <div class="cert-titles">
+                <span class="cisco-logo-text">CISCO</span>
+                <span class="networking-academy">Networking Academy</span>
+              </div>
+            </div>
+            <div class="verified-badge">Verified</div>
+            <div class="cert-waves green-waves"></div>
+            <div class="cert-title">Introduction to Packet Tracer</div>
+          </div>
+          <div class="cert-info">
+            <a href="https://www.credly.com/badges/60abd931-b20b-4126-98ea-74a25fc81924/public_url" target="_blank" rel="noopener"><h3>Introduction à Packet Tracer</h3></a>
+            <p class="cert-issuer">🏢 Cisco Networking Academy</p>
+          </div>
+        </div>
+
+        <div class="certification-card">
+          <div class="cert-badge cisco-blue">
+            <div class="cert-header">
+              <svg class="cisco-svg" viewBox="0 0 100 40" fill="currentColor" aria-hidden="true"><use href="#cisco-bars" xlink:href="#cisco-bars"/></svg>
+              <div class="cert-titles">
+                <span class="cisco-logo-text">CISCO</span>
+                <span class="networking-academy">Networking Academy</span>
+              </div>
+            </div>
+            <div class="verified-badge">Verified</div>
+            <div class="cert-waves blue-waves"></div>
+            <div class="cert-title">Networking Basics</div>
+          </div>
+          <div class="cert-info">
+            <a href="https://www.credly.com/badges/b9cbf13e-a9bc-4567-839e-75670ef25b5b/public_url" target="_blank" rel="noopener"><h3>Networking Basics</h3></a>
+            <p class="cert-issuer">🏢 Cisco Networking Academy</p>
+          </div>
+        </div>
+
+        <div class="certification-card">
+          <div class="cert-badge cisco-blue">
+            <div class="cert-header">
+              <svg class="cisco-svg" viewBox="0 0 100 40" fill="currentColor" aria-hidden="true"><use href="#cisco-bars" xlink:href="#cisco-bars"/></svg>
+              <div class="cert-titles">
+                <span class="cisco-logo-text">CISCO</span>
+                <span class="networking-academy">Networking Academy</span>
+              </div>
+            </div>
+            <div class="verified-badge">Verified</div>
+            <div class="cert-waves blue-waves"></div>
+            <div class="cert-title">Operating Systems Basics</div>
+          </div>
+          <div class="cert-info">
+            <a href="https://www.credly.com/badges/120495bf-d6ab-49b7-ab44-d18e151e4d86/public_url" target="_blank" rel="noopener"><h3>Notions de base sur les systèmes d'exploitation</h3></a>
+            <p class="cert-issuer">🏢 Cisco Networking Academy</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projets" class="reveal">
+      <h2>Projets</h2>
+      <div class="projects">
+        <!-- 1. Active Directory & GPO -->
+        <div class="project" data-modal="Active Directory &amp; GPO">
+          <div class="thumb">🏰</div>
+          <div class="info">
+            <h3>Active Directory &amp; GPO</h3>
+            <p>Déploiement d'un domaine Active Directory et durcissement par GPO</p>
+            <div class="project-docs">
+              <a href="Procédure_AD.pdf" target="_blank" rel="noopener" class="doc-link pdf">📄 Procédure Active Directory</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Fail2ban -->
+        <div class="project" data-modal="Fail2ban">
+          <div class="thumb">🛡️</div>
+          <div class="info">
+            <h3>Sécurisation Fail2ban</h3>
+            <p>Mise en place d'un protocole de sécurité avec Fail2ban sur Ubuntu</p>
+            <div class="project-docs">
+              <a href="installation_fail2ban.pdf" target="_blank" rel="noopener" class="doc-link pdf">📄 Installation fail2ban</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. GLPI & Agent GLPI -->
+        <div class="project" data-modal="GLPI">
+          <div class="thumb">🎫</div>
+          <div class="info">
+            <h3>GLPI &amp; Agent GLPI</h3>
+            <p>Déploiement de GLPI sur Ubuntu avec installation et configuration des agents</p>
+            <div class="project-docs">
+              <a href="glpi_ubuntu.pdf" target="_blank" rel="noopener" class="doc-link pdf">📄 Installation GLPI</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. OCS Inventory + Import BDD -->
+        <div class="project" data-modal="OCS Inventory">
+          <div class="thumb">📦</div>
+          <div class="info">
+            <h3>OCS Inventory + Import BDD</h3>
+            <p>Déploiement d'OCS Inventory et import d'une BDD pour simuler un parc informatique complet</p>
+            <div class="project-docs">
+              <a href="installation_OCS.pdf" target="_blank" rel="noopener" class="doc-link pdf">📄 Installation OCS Inventory</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Déploiement WordPress -->
+        <div class="project" data-modal="WordPress Ubuntu">
+          <div class="thumb">🌐</div>
+          <div class="info">
+            <h3>Déploiement WordPress</h3>
+            <p>Installation et configuration de WordPress sur serveur Ubuntu</p>
+            <div class="project-docs">
+              <a href="Guide_pile_LAMP.pdf" target="_blank" rel="noopener" class="doc-link pdf">📄 Guide installation LAMP</a>
+              <a href="guide_installation_wordpress.pdf" target="_blank" rel="noopener" class="doc-link pdf">📄 Installation WordPress</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Cluster Proxmox -->
+        <div class="project" data-modal="Proxmox">
+          <div class="thumb">🖧</div>
+          <div class="info">
+            <h3>Cluster Proxmox</h3>
+            <p>Configuration physique et mise en cluster de deux serveurs Proxmox</p>
+            <div class="project-docs">
+              <a href="procédure_proxmox_cluster.pdf" target="_blank" rel="noopener" class="doc-link pdf">📄Procédure proxmox cluster</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Serveur de jeu -->
+        <div class="project" data-modal="Serveur de jeu">
+          <div class="thumb">🎮</div>
+          <div class="info">
+            <h3>Serveur de jeu</h3>
+            <p>Création d'un serveur de jeu sur Ubuntu pour y jouer sur plusieurs hôtes</p>
+            <div class="project-docs">
+              <a href="serveur_minecraft.pdf" target="_blank" rel="noopener" class="doc-link pdf">📄Guide serveur minecraft</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Création site web -->
+        <div class="project" data-modal="Site de location">
+          <div class="thumb">🚗</div>
+          <div class="info">
+            <h3>Création site web</h3>
+            <p>Site de location de voiture en ligne</p>
+          </div>
+        </div>
+
+        <!-- 9. Infrastructure réseau -->
+        <div class="project" data-modal="Infrastructure réseau">
+          <div class="thumb">💻</div>
+          <div class="info">
+            <h3>Infrastructure réseau (logiciel)</h3>
+            <p>Création d'une infrastructure réseau sur Cisco PacketTracer</p>
+            <div class="project-docs">
+              <a href="documentation_infra_cisco.pdf" target="_blank" rel="noopener" class="doc-link pdf">📄 Guide infra cisco.pdf</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Portfolio (E-portfolio) en dernier -->
+        <div class="project" data-modal="Portfolio">
+          <div class="thumb">🎨</div>
+          <div class="info">
+            <h3>E-Portfolio</h3>
+            <p>Création d'un site personnel moderne et animé.</p>
+            <div class="project-docs">
+              <a href="memo_HTML5_CSS_Java.pdf" target="_blank" rel="noopener" class="doc-link pdf">📄 Mémo HTML5, CSS et Java</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sous-catégorie : Documentations d'installation -->
+      <div class="sub-category">
+        <h3 class="sub-title">📘 Documentations d'installation</h3>
+        <div class="doc-grid">
+
+          <!-- Doc Windows 11 (Disponible) -->
+          <a href="configwindows11.pdf" target="_blank" rel="noopener" class="doc-item">
+            <div class="doc-details">
+              <span class="thumb-mini">🪟</span>
+              <h4>Windows 11</h4>
+            </div>
+            <span class="doc-link pdf">📄 PDF</span>
+          </a>
+
+          <!-- Doc Windows 2025 Serveur -->
+          <div class="doc-item unavailable">
+            <div class="doc-details">
+              <span class="thumb-mini">🖥️</span>
+              <h4>Windows 2025 Serveur</h4>
+            </div>
+            <span class="doc-status">À venir...</span>
+          </div>
+
+          <!-- Doc Ubuntu -->
+          <div class="doc-item unavailable">
+            <div class="doc-details">
+              <span class="thumb-mini">🐧</span>
+              <h4>Ubuntu</h4>
+            </div>
+            <span class="doc-status">À venir...</span>
+          </div>
+
+          <!-- Doc PFsense -->
+          <div class="doc-item unavailable">
+            <div class="doc-details">
+              <span class="thumb-mini">🛡️</span>
+              <h4>PFsense</h4>
+            </div>
+            <span class="doc-status">À venir...</span>
+          </div>
+
+          <!-- Doc Proxmox -->
+          <div class="doc-item unavailable">
+            <div class="doc-details">
+              <span class="thumb-mini">🖧</span>
+              <h4>Proxmox VE</h4>
+            </div>
+            <span class="doc-status">À venir...</span>
+          </div>
+
+          <!-- Doc Debian 13 -->
+          <div class="doc-item unavailable">
+            <div class="doc-details">
+              <span class="thumb-mini">🐧</span>
+              <h4>Debian 13</h4>
+            </div>
+            <span class="doc-status">À venir...</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="stages" class="reveal">
+      <h2>Stages</h2>
+      <ul class="timeline">
+        <li class="stage-item">
+          <div class="stage-content">
+            <span>2026 - Groupe Henner</span>
+            Support informatique. Gestion des tickets, dépannage informatique, gestion du parc informatique, support utilisateurs
+          </div>
+          <a href="rapport_stage_henner.html" target="_blank" rel="noopener" class="doc-link html-report">📄Accéder à la version web du rapport de stage ↗</a>
+        </li>
+        <li>
+          <span>2025 - Groupe Henner</span>
+          Support informatique. Gestion des tickets, dépannage informatique, gestion du parc informatique, support utilisateurs
+        </li>
+        <li>
+          <span>2024 - Groupe Henner</span>
+          Support informatique. Gestion des tickets, dépannage informatique, gestion du parc informatique
+        </li>
+        <li>
+          <span>2023 - SEREEM</span>
+          Fabrication de coffret et d'armoire électrique. Câblage coffret et armoire électrique
+        </li>
+        <li>
+          <span>2022 - Mairie d'Epinay-sur-Seine</span>
+          Gestion des passeports et carte d'identités, suivi de dossiers, accueil
+        </li>
+      </ul>
+    </section>
+
+    <section id="veille" class="reveal">
+      <h2>Veille technologique</h2>
+      <div class="veille-container">
+        <div class="veille-card">
+          <h3>🔐 Zero Trust Security &amp; Cloud Infrastructure</h3>
+
+          <!-- ===== RÉSUMÉ (toujours visible) ===== -->
+          <div class="veille-summary">
+            <p>Le Zero Trust (« ne jamais faire confiance, toujours vérifier ») remplace la sécurité par périmètre : chaque accès est contrôlé en continu selon l'identité, l'état du poste et le contexte. Ma veille suit sa mise en œuvre concrète dans l'écosystème que j'utilise en stage et en labo : <strong>Microsoft Entra ID</strong> et accès conditionnel, <strong>Intune</strong> pour la conformité des postes, <strong>ServiceNow</strong> pour les incidents, <strong>Proxmox</strong> et <strong>Linux</strong> pour l'infrastructure, sans oublier les <strong>fins de support</strong> et la réglementation <strong>NIS2</strong>.</p>
+            <p class="veille-updated">📅 Dernière mise à jour : <time datetime="2026-10-11">11 octobre 2026</time></p>
+            <ul class="veille-highlights">
+              <li><strong>Windows 10 :</strong> fin de la 1<sup>re</sup> année d'ESU entreprise le 13 octobre 2026 ; ESU grand public prolongé jusqu'au 12 octobre 2027.</li>
+              <li><strong>NIS2 :</strong> la loi Résilience n'est toujours pas votée en France, son examen à l'Assemblée a été de nouveau reporté le 6 octobre 2026.</li>
+              <li><strong>Outils :</strong> Intune 2609 (déploiements par anneaux), ServiceNow Brazil en accès anticipé, Proxmox VE 9.2 et Debian 11 hors support depuis le 31 août.</li>
+            </ul>
+          </div>
+
+          <!-- ===== VOLET DÉROULANT (veille complète) ===== -->
+          <details class="veille-details">
+            <summary>
+              <span class="label-closed">📖 Voir la veille détaillée</span>
+              <span class="label-open">📖 Masquer la veille détaillée</span>
+            </summary>
+
+            <div class="veille-content">
+              <p class="veille-note">Informations vérifiées le 11 octobre 2026 auprès des sources listées en bas de section. Certaines échéances (NIS2, ESU Windows 10, sorties ServiceNow) évoluent régulièrement.</p>
+
+              <h4>📌 Contexte &amp; Enjeux</h4>
+              <p>L'architecture Zero Trust ("Ne jamais faire confiance, toujours vérifier") révolutionne la sécurité du système d'information. En éliminant la notion de périmètre de confiance traditionnel, elle impose un contrôle continu des accès, des identités et des terminaux, indispensable pour accompagner l'essor du travail hybride et des infrastructures Cloud.</p>
+              <ul>
+                <li><strong>Trois principes :</strong> vérifier explicitement chaque demande d'accès, appliquer le moindre privilège, partir du principe qu'une compromission a déjà eu lieu.</li>
+                <li><strong>Cinq piliers (NIST SP 800-207, modèle de maturité CISA) :</strong> identité, appareils, réseaux, applications &amp; charges de travail, données.</li>
+                <li><strong>Évolution en 2026 :</strong> l'identité devient le principal point de contrôle, le Zero Trust s'étend aux environnements industriels (OT) et, depuis septembre 2026, au trafic des agents IA.</li>
+              </ul>
+
+              <h4>⚙️ Méthodologie &amp; Supports de veille</h4>
+              <ul>
+                <li><strong>Collecte automatisée (Push) :</strong> Flux RSS centralisés sur Feedly (IT-Connect, ZDNet, Microsoft Security Blog) et Google Alerts sur les mots-clés <code>Zero Trust</code>, <code>Microsoft Entra ID</code>, <code>Intune Compliance</code>.</li>
+                <li><strong>Recherche active (Pull) :</strong> Consultation hebdomadaire des documentations officielles Microsoft Learn, ServiceNow Community et bulletins de sécurité cert-fr.</li>
+              </ul>
+              <div class="veille-table-wrap">
+                <table class="veille-table">
+                  <thead>
+                    <tr><th>Support</th><th>Type</th><th>Rythme</th><th>Ce que j'y cherche</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Feedly (IT-Connect, ZDNet, Microsoft Security Blog)</td><td>Flux RSS (push)</td><td>Quotidien</td><td>Actualités sécurité et écosystème Microsoft</td></tr>
+                    <tr><td>Google Alerts</td><td>Alertes mail (push)</td><td>Au fil de l'eau</td><td>Zero Trust, Entra ID, Intune Compliance</td></tr>
+                    <tr><td>Microsoft Learn — « What's new in Intune »</td><td>Documentation officielle (pull)</td><td>Hebdomadaire</td><td>Nouvelles fonctions, versions de service (2609…)</td></tr>
+                    <tr><td>Message Center Microsoft (via Entra.News)</td><td>Annonces éditeur</td><td>Hebdomadaire</td><td>Changements Entra ID avec dates d'application</td></tr>
+                    <tr><td>ServiceNow Community &amp; Release Notes</td><td>Documentation officielle (pull)</td><td>À chaque release</td><td>Calendrier des familles, patchs, nouveautés</td></tr>
+                    <tr><td>Debian (annonces LTS), Proxmox (communiqués, forum)</td><td>Annonces projet (pull)</td><td>À chaque publication</td><td>Versions, fins de support, correctifs</td></tr>
+                    <tr><td>ANSSI / CERT-FR</td><td>Bulletins officiels (pull)</td><td>Hebdomadaire</td><td>Alertes, NIS2, référentiel ReCyF</td></tr>
+                    <tr><td>CISA — « Journey to Zero Trust »</td><td>Guides officiels (pull)</td><td>À chaque publication</td><td>Bonnes pratiques Zero Trust</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4>📰 Fil d'actualités &amp; Évolution de la thématique</h4>
+              <p>Classées par domaine, de la plus récente à la plus ancienne.</p>
+
+              <details class="veille-sub" open>
+                <summary>🔑 Identité &amp; accès — Microsoft Entra ID</summary>
+                <ul>
+                  <li><strong>Octobre 2026 :</strong> Windows Hello for Business et macOS Platform SSO sont reconnus comme facteurs MFA à part entière : l'utilisateur n'a plus besoin d'une clé d'accès supplémentaire pour satisfaire l'exigence de MFA.</li>
+                  <li><strong>5 octobre 2026 :</strong> campagne d'inscription SSPR (réinitialisation de mot de passe en libre-service) qui invite administrateurs et utilisateurs à enregistrer leurs méthodes d'authentification avant le durcissement.</li>
+                  <li><strong>Septembre 2026 :</strong> échéance de migration des « Custom controls » de l'accès conditionnel vers <em>External MFA</em> (solutions MFA tierces) ; leur retrait définitif est prévu en mai 2027.</li>
+                  <li><strong>Printemps–été 2026 :</strong> application renforcée de l'accès conditionnel. Une stratégie ciblant « toutes les ressources » avec des exclusions s'applique désormais aussi aux connexions qui ne demandent que des autorisations OIDC ou annuaire limitées : ces applications peuvent recevoir un défi MFA ou de conformité de l'appareil. Déploiement progressif à partir de fin mars 2026.</li>
+                  <li><strong>Depuis octobre 2024 :</strong> MFA obligatoire pour les portails d'administration (Azure, Entra, Intune), dans le cadre de la Secure Future Initiative lancée en novembre 2023.</li>
+                </ul>
+              </details>
+
+              <details class="veille-sub" open>
+                <summary>💻 Postes, Windows &amp; Intune</summary>
+                <ul>
+                  <li><strong>13 octobre 2026 :</strong> fin de la première année d'ESU entreprise pour Windows 10 ; la deuxième année court jusqu'au 12 octobre 2027 et la troisième jusqu'au 10 octobre 2028. Les tarifs d'ESU des entreprises vont environ doubler d'après la presse spécialisée.</li>
+                  <li><strong>Fin septembre 2026 — Intune 2609 :</strong> la nouvelle page « appareil unique » devient l'expérience par défaut, paramètres pour Windows 26H2, nouveaux réglages de protection d'exécution des agents IA (Microsoft Defender for Endpoint) et intégration en libre-service des partenaires de conformité MDM.</li>
+                  <li><strong>Septembre 2026 — Intune « Deployments » (aperçu public) :</strong> déploiement progressif d'applications et de stratégies de configuration par anneaux, avec maîtrise du calendrier et couplage possible à l'approbation par plusieurs administrateurs (Multiple Admin Approval).</li>
+                  <li><strong>Septembre 2026 :</strong> Microsoft poursuit son objectif de désactiver NTLM par défaut dans Windows, à terme, pour une authentification sécurisée par défaut.</li>
+                  <li><strong>Septembre 2026 :</strong> le Zero Trust s'étend au trafic des agents IA : Microsoft Purview et Entra Global Secure Access protègent désormais les données en transit (disponibilité générale), y compris les flux d'agents agissant pour le compte d'un utilisateur.</li>
+                  <li><strong>25 juin 2026 :</strong> Microsoft prolonge d'un an l'ESU grand public de Windows 10, désormais valable jusqu'au 12 octobre 2027 (changement apparu dans la documentation, sans annonce formelle).</li>
+                  <li><strong>14 octobre 2025 :</strong> fin du support standard de Windows 10.</li>
+                </ul>
+              </details>
+
+              <details class="veille-sub" open>
+                <summary>🎫 ServiceNow</summary>
+                <ul>
+                  <li><strong>24 septembre 2026 :</strong> la release <strong>Brazil</strong> passe en accès anticipé (instances de développement personnelles disponibles le même jour) ; disponibilité générale attendue début novembre 2026. Au programme : outils de développement basés sur des agents IA (Build Agent, Autonomous Engineer).</li>
+                  <li><strong>5 mai 2026 :</strong> disponibilité générale de la release <strong>Australia</strong> (accès anticipé le 12 mars). Première release à nom de pays, après Zurich (septembre 2025) qui concluait la série des noms de villes de A à Z. Les versions majeures passent à un rythme T2/T4. Nouveautés : analytique de plateforme unifiée, gouvernance de l'IA renforcée, rôles d'administration granulaires, historique d'usurpation d'identité.</li>
+                  <li><strong>À venir :</strong> la release suivante, Canada, est annoncée pour 2027.</li>
+                </ul>
+              </details>
+
+              <details class="veille-sub" open>
+                <summary>🖧 Virtualisation — Proxmox VE</summary>
+                <ul>
+                  <li><strong>21 mai 2026 — Proxmox VE 9.2 :</strong> équilibreur de charge dynamique (migration automatique des VM gérées par la haute disponibilité), commandes pour « armer » et « désarmer » la HA sur tout le cluster pendant une maintenance, WireGuard et BGP dans le SDN, gestion graphique des modèles de CPU personnalisés. Base Debian 13.5, noyau Linux 7.0, QEMU 11.0, LXC 7.0, ZFS 2.4.</li>
+                  <li><strong>19 novembre 2025 — Proxmox VE 9.1 :</strong> conteneurs LXC créés depuis des images OCI, état TPM au format qcow2, virtualisation imbriquée, Intel TDX, actions groupées au niveau du datacenter, noyau 6.17.</li>
+                  <li><strong>Août 2025 — Proxmox VE 9.0 :</strong> passage à Debian 13, snapshots en chaînes de volumes (iSCSI, Fibre Channel), règles d'affinité HA, SDN fabrics (OpenFabric, OSPF), extension RAIDZ avec ZFS 2.3.</li>
+                </ul>
+              </details>
+
+              <details class="veille-sub" open>
+                <summary>🐧 Systèmes Linux — Debian &amp; Ubuntu</summary>
+                <ul>
+                  <li><strong>12 septembre 2026 :</strong> Debian 13.7, mise à jour intermédiaire de « Trixie » (version stable depuis le 9 août 2025).</li>
+                  <li><strong>31 août 2026 :</strong> fin du support LTS de Debian 11 « Bullseye » : plus aucune mise à jour de sécurité depuis septembre (un support commercial étendu existe pour un sous-ensemble de paquets). Debian 12 « Bookworm » est en LTS depuis juin 2026.</li>
+                  <li><strong>27 août 2026 :</strong> Ubuntu 26.04.1 LTS « Resolute Raccoon ».</li>
+                </ul>
+              </details>
+
+              <details class="veille-sub" open>
+                <summary>🏛️ Réglementation &amp; référentiels</summary>
+                <ul>
+                  <li><strong>6 octobre 2026 :</strong> l'examen en séance à l'Assemblée nationale du projet de loi Résilience (transposition de NIS2, REC et DORA), prévu le 7 octobre, est de nouveau retiré de l'ordre du jour, sans nouvelle date.</li>
+                  <li><strong>1<sup>er</sup> octobre 2026 :</strong> le directeur général de l'ANSSI indique envisager d'exiger une conformité complète à NIS2 fin 2028.</li>
+                  <li><strong>8 juillet 2026 :</strong> la Commission européenne saisit la Cour de justice de l'UE contre la France et trois autres États pour défaut de transposition dans les délais (échéance initiale : 17 octobre 2024).</li>
+                  <li><strong>24 juin 2026 :</strong> la CISA publie un guide sur la transition vers des architectures Zero Trust modernes (TIC 3.0 et SASE), dans sa série « Journey to Zero Trust ».</li>
+                  <li><strong>29 avril 2026 :</strong> la CISA et ses partenaires publient « Adapting Zero Trust Principles to Operational Technology », premier guide complet d'application du Zero Trust aux systèmes industriels, aligné sur le NIST CSF 2.0.</li>
+                  <li><strong>17 mars 2026 :</strong> l'ANSSI met à disposition le Référentiel Cyber France (ReCyF), mesures recommandées pour atteindre les objectifs de NIS2, diffusé comme document de travail.</li>
+                </ul>
+              </details>
+
+              <h4>⏳ Fins de support à surveiller</h4>
+              <div class="veille-table-wrap">
+                <table class="veille-table">
+                  <thead>
+                    <tr><th>Produit</th><th>Échéance</th><th>Statut</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Windows 10 22H2 — ESU entreprise, année 1</td><td>13 octobre 2026</td><td><span class="tag tag-soon">Imminent</span></td></tr>
+                    <tr><td>Windows Server 2016 — support étendu</td><td>12 janvier 2027</td><td><span class="tag tag-soon">Proche</span></td></tr>
+                    <tr><td>Entra ID — Custom controls (accès conditionnel)</td><td>Retrait en mai 2027</td><td><span class="tag tag-plan">Migration à faire</span></td></tr>
+                    <tr><td>Windows 10 — ESU grand public (prolongé) et ESU entreprise, année 2</td><td>12 octobre 2027</td><td><span class="tag tag-plan">À planifier</span></td></tr>
+                    <tr><td>Windows 10 — ESU entreprise, année 3</td><td>10 octobre 2028</td><td><span class="tag tag-plan">À planifier</span></td></tr>
+                    <tr><td>Debian 12 « Bookworm » — LTS</td><td>30 juin 2028</td><td><span class="tag tag-ok">En LTS</span></td></tr>
+                    <tr><td>Debian 13 « Trixie » — sécurité, puis LTS</td><td>9 août 2028, puis 30 juin 2030</td><td><span class="tag tag-ok">Support actif</span></td></tr>
+                    <tr><td>Debian 11 « Bullseye » — LTS</td><td>31 août 2026</td><td><span class="tag tag-ended">Terminé</span></td></tr>
+                    <tr><td>Windows 10 — support standard</td><td>14 octobre 2025</td><td><span class="tag tag-ended">Terminé</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4>🛠️ Technologies &amp; Notions clés</h4>
+              <ul>
+                <li><strong>Gestion des Identités (IAM) :</strong> Microsoft Entra ID, authentification forte (MFA), accès conditionnel, External MFA, Windows Hello for Business.</li>
+                <li><strong>Gestion des Terminaux (MDM) :</strong> Microsoft Intune pour garantir la conformité des postes avant autorisation réseau.</li>
+                <li><strong>Segmentation &amp; Supervision :</strong> Microsegmentation sur hyperviseurs (Proxmox/VirtualBox), filtrage applicatif (Fail2ban, UFW) et gestion d'incidents via ServiceNow.</li>
+                <li><strong>Cadres de référence :</strong> NIST SP 800-207, modèle de maturité Zero Trust de la CISA, directive NIS2 et référentiel ReCyF de l'ANSSI.</li>
+              </ul>
+
+              <h4>💡 Application pratique &amp; Impact dans mon parcours</h4>
+              <p>Cette veille a directement nourri mon expérience professionnelle lors de mes stages chez <strong>Groupe Henner</strong> (enrôlement et conformité de postes via Microsoft Intune, gestion des tickets sous ServiceNow). Elle m'a également permis d'appliquer des stratégies de segmentation et de durcissement réseau sur mes environnements de laboratoire (VirtualBox, clusters Proxmox et règles GPO sous Active Directory).</p>
+
+              <h4>🔗 Sources consultées</h4>
+              <ul class="veille-sources">
+                <li><a href="https://www.helpnetsecurity.com/2026/01/29/microsoft-entra-conditional-access-policy-enforcement/" target="_blank" rel="noopener">Help Net Security — Changement d'application de l'accès conditionnel Entra</a></li>
+                <li><a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/microsoft-entra-id-security-updates-what-organizations-need-to-do-now/4522024" target="_blank" rel="noopener">Microsoft Tech Community — Entra ID security updates (Custom controls, SSPR)</a></li>
+                <li><a href="https://daily.entra.news/topics/conditional-access/" target="_blank" rel="noopener">Entra.News — Conditional Access</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/intune/whats-new/" target="_blank" rel="noopener">Microsoft Learn — What's new in Microsoft Intune</a></li>
+                <li><a href="https://www.microsoft.com/en-us/security/blog/2026/09/24/whats-new-in-microsoft-security-september-2026/" target="_blank" rel="noopener">Microsoft Security Blog — What's new in Microsoft Security : septembre 2026</a></li>
+                <li><a href="https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-news-you-can-use-september-2026/4552395" target="_blank" rel="noopener">Windows IT Pro Blog — Windows news you can use : septembre 2026</a></li>
+                <li><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-quietly-extends-free-windows-10-esu-support-to-october-2027/" target="_blank" rel="noopener">BleepingComputer — Prolongation de l'ESU grand public Windows 10</a></li>
+                <li><a href="https://computerworld.com/article/4231366/windows-11-gains-ground-as-price-hike-looms-for-windows-10-security-updates.html" target="_blank" rel="noopener">Computerworld — Hausse des tarifs ESU Windows 10</a></li>
+                <li><a href="https://www.microsoft.com/en-us/windows-server/blog/2026/02/25/planning-ahead-for-windows-server-2016-end-of-support/" target="_blank" rel="noopener">Microsoft Windows Server Blog — Fin de support de Windows Server 2016</a></li>
+                <li><a href="https://www.servicenow.com/community/product-launch-forum/i-would-like-to-know-the-new-australia-version-release-date/td-p/3577767" target="_blank" rel="noopener">ServiceNow Community — Dates de la release Australia</a></li>
+                <li><a href="https://www.dotsquares.com/press-and-events/tech/servicenow-brazil-release-2026" target="_blank" rel="noopener">Dotsquares — ServiceNow Brazil release 2026</a></li>
+                <li><a href="https://proxmox.com/en/about/company-details/press-releases/proxmox-virtual-environment-9-2" target="_blank" rel="noopener">Proxmox — Communiqué Proxmox VE 9.2</a></li>
+                <li><a href="https://www.proxmox.com/en/services/training-courses/videos/proxmox-virtual-environment/whats-new-in-proxmox-ve-9-1" target="_blank" rel="noopener">Proxmox — Nouveautés de Proxmox VE 9.1</a></li>
+                <li><a href="https://www.debian.org/News/2026/20260831" target="_blank" rel="noopener">Debian — Fin du support LTS de Debian 11</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Debian_release_version_history" target="_blank" rel="noopener">Wikipedia — Historique des versions de Debian</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Ubuntu" target="_blank" rel="noopener">Wikipedia — Ubuntu</a></li>
+                <li><a href="https://www.leto.legal/news/assemblee-nationale-report-projet-loi-resilience-nis2-octobre-2026" target="_blank" rel="noopener">Leto — Report de l'examen de la loi Résilience (NIS2)</a></li>
+                <li><a href="https://aocsi.fr/blog/loi-resilience-transposition-nis2" target="_blank" rel="noopener">AOCSI — Où en est la transposition de NIS2</a></li>
+                <li><a href="https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N50731" target="_blank" rel="noopener">Assemblée nationale — Dossier législatif du projet de loi Résilience</a></li>
+                <li><a href="https://www.cisa.gov/news-events/news/new-cisa-guide-assists-federal-agencies-transitioning-modernized-zero-trust-architectures" target="_blank" rel="noopener">CISA — Guide de transition vers le Zero Trust (TIC 3.0)</a></li>
+                <li><a href="https://industrialcyber.co/zero-trust/new-cisa-guidance-outlines-zero-trust-roadmap-for-ot-environments-facing-legacy-constraints-and-growing-attack-surfaces/" target="_blank" rel="noopener">Industrial Cyber — Guide CISA Zero Trust pour l'OT</a></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <h2>Contact</h2>
+      <div class="contact-content">
+        <p>📧 <a href="mailto:alexismessager123@gmail.com">alexismessager123@gmail.com</a></p>
+        <p>💼 <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a> | <a href="https://github.com" target="_blank" rel="noopener">GitHub</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Site By Alexis Messager • BTS SIO SISR</p>
+  </footer>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <span class="close" data-close-modal>&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalBody"></p>
+    </div>
+  </div>
+
+  <button type="button" class="scroll-top" data-scroll-top aria-label="Retour en haut">⬆</button>
+</body>
+</html>
