@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab Infrastructure - AD DS, GLPI, Zabbix & pfSense | Alexis Messager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(22, 31, 49, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-blue: #00f2fe;
+      --accent-purple: #7928ca;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --code-bg: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      padding-bottom: 60px;
+      overflow-x: hidden;
+    }
+
+    /* Arrière-plan animé */
+    .bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.15;
+    }
+
+    .orb-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: var(--accent-blue); }
+    .orb-2 { bottom: -10%; right: -10%; width: 600px; height: 600px; background: var(--accent-purple); }
+
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+
+    .back-btn:hover {
+      transform: translateX(-5px);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #ffffff 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 25px auto;
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent-blue);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: border-color 0.3s;
+    }
+
+    .section-card:hover {
+      border-color: rgba(0, 242, 254, 0.3);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 12px;
+    }
+
+    .icon-box {
+      width: 36px;
+      height: 36px;
+      background: rgba(0, 242, 254, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    /* Grille d'architecture */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .vm-card {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .vm-card h4 {
+      color: var(--accent-blue);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .vm-status {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-green);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .vm-details {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .vm-details li {
+      list-style: none;
+      margin-bottom: 4px;
+    }
+
+    /* Listes stylisées */
+    .steps-list {
+      list-style: none;
+      counter-reset: step-counter;
+    }
+
+    .steps-list li {
+      position: relative;
+      padding-left: 45px;
+      margin-bottom: 20px;
+    }
+
+    .steps-list li::before {
+      counter-increment: step-counter;
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid var(--accent-blue);
+      color: var(--accent-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* Accordéons / Guides Déroulants */
+    details.guide-accordion {
+      background: rgba(17, 24, 39, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      margin-top: 15px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    details.guide-accordion[open] {
+      border-color: rgba(0, 242, 254, 0.4);
+    }
+
+    details.guide-accordion summary {
+      padding: 14px 18px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      list-style: none;
+    }
+
+    details.guide-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.guide-accordion summary::after {
+      content: "▼";
+      font-size: 0.75rem;
+      transition: transform 0.2s;
+      color: var(--text-muted);
+    }
+
+    details.guide-accordion[open] summary::after {
+      transform: rotate(180deg);
+      color: var(--accent-blue);
+    }
+
+    .accordion-content {
+      padding: 15px 20px 20px 20px;
+      border-top: 1px solid var(--card-border);
+      font-size: 0.9rem;
+      color: #d1d5db;
+    }
+
+    .accordion-content ol {
+      margin-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .accordion-content li {
+      margin-bottom: 8px;
+    }
+
+    /* Commandes / Code block */
+    pre, code {
+      font-family: 'Fira Code', monospace;
+    }
+
+    .code-block {
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 15px;
+      margin: 12px 0;
+      overflow-x: auto;
+      font-size: 0.88rem;
+      color: #e5e7eb;
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--accent-amber);
+      padding: 15px;
+      border-radius: 0 8px 8px 0;
+      margin: 15px 0;
+      font-size: 0.9rem;
+    }
+
+    .success-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--accent-green);
+      padding: 15px;
+      border-radius: 0 8px 8px 0;
+      margin: 15px 0;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <header>
+    <a href="index.html#projets" class="back-btn">← Retour au portfolio</a>
+    <h1>Documentation Technique : Lab Enterprise</h1>
+    <p class="subtitle">Déploiement complet d'une infrastructure d'entreprise virtualisée : Pare-feu pfSense, Domaine AD DS Windows Server 2025, Supervision Zabbix 7.0 LTS et Ticketing/Inventaire GLPI 10 sous Debian 13.</p>
+    
+    <div class="tags-container">
+      <span class="tag">pfSense</span>
+      <span class="tag">Windows Server 2025</span>
+      <span class="tag">Debian 13</span>
+      <span class="tag">Active Directory</span>
+      <span class="tag">GLPI 10</span>
+      <span class="tag">Zabbix 7.0 LTS</span>
+      <span class="tag">LDAP</span>
+      <span class="tag">Agent GLPI</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SECTION 1 : TOPOLOGIE ET VIRTUALISATION -->
+    <section class="section-card">
+      <h2 class="section-title"><div class="icon-box">🖧</div> 1. Architecture & Plan d'Adressage IP</h2>
+      <p>L'infrastructure est entièrement isolée et orchestrée sous <strong>VirtualBox</strong>. Elle simule un réseau d'entreprise partitionné et sécurisé.</p>
+      
+      <div class="arch-grid">
+        <div class="vm-card">
+          <h4>pfSense <span class="vm-status">En fonction</span></h4>
+          <ul class="vm-details">
+            <li><strong>Rôle :</strong> Routeur / Pare-feu</li>
+            <li><strong>WAN :</strong> DHCP (Accès Internet)</li>
+            <li><strong>LAN IP :</strong> 192.168.1.1 /24</li>
+          </ul>
+        </div>
+
+        <div class="vm-card">
+          <h4>Windows Server 2025 <span class="vm-status">Opérationnel</span></h4>
+          <ul class="vm-details">
+            <li><strong>Rôle :</strong> AD DS, DNS, DHCP</li>
+            <li><strong>Domaine :</strong> entreprise.local</li>
+            <li><strong>IP Fixe :</strong> 192.168.1.10 /24</li>
+          </ul>
+        </div>
+
+        <div class="vm-card">
+          <h4>Debian 13 (GLPI / Zabbix) <span class="vm-status">En fonction</span></h4>
+          <ul class="vm-details">
+            <li><strong>Rôle :</strong> Helpdesk & Supervision</li>
+            <li><strong>Services :</strong> Apache2, MariaDB</li>
+            <li><strong>IP Fixe :</strong> 192.168.1.101 /24</li>
+          </ul>
+        </div>
+
+        <div class="vm-card">
+          <h4>Windows 11 CLT <span class="vm-status">Client</span></h4>
+          <ul class="vm-details">
+            <li><strong>Rôle :</strong> Poste de travail utilisateur</li>
+            <li><strong>Domaine :</strong> Joins à entreprise.local</li>
+            <li><strong>IP :</strong> DHCP (AD)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 : PFSENSE -->
+    <section class="section-card">
+      <h2 class="section-title"><div class="icon-box">🛡️</div> 2. Configuration du Pare-feu pfSense</h2>
+      <ul class="steps-list">
+        <li>
+          <strong>Attribution des interfaces réseau :</strong>
+          <p>Mise en place de l'interface WAN (Accès au réseau physique) et de l'interface LAN configurée sur le réseau interne <code>192.168.1.0/24</code>.</p>
+        </li>
+        <li>
+          <strong>Règles de filtrage & Flux réseau :</strong>
+          <p>Autorisation des flux DNS, HTTP/HTTPS vers le serveur Debian (`192.168.1.101`) et routage des requêtes Active Directory (Port 389 LDAP / 88 Kerberos).</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SECTION 3 : WINDOWS SERVER 2025 & AD DS -->
+    <section class="section-card">
+      <h2 class="section-title"><div class="icon-box">🏰</div> 3. Active Directory DS, GPO & Jonction Domaine</h2>
+      <ul class="steps-list">
+        <li>
+          <strong>Promotion du Domaine :</strong>
+          <p>Installation du rôle AD DS sur Windows Server 2025 et création de la forêt <code>entreprise.local</code>. Structuration des Unités d'Organisation (ex: UO <em>Informatique</em>) et ajout des utilisateurs (<code>Jordan Guillet</code>, etc.).</p>
+        </li>
+        <li>
+          <strong>Résolution de la signature LDAP obligatoire (Erreur 8) par GPO :</strong>
+          <div class="warning-box">
+            Windows Server 2025 impose par défaut la signature obligatoire des paquets LDAP, ce qui bloque la synchronisation GLPI standard.
+          </div>
+
+          <!-- GUIDE DÉROULANT : CONFIGURATION GPO -->
+          <details class="guide-accordion">
+            <summary>📖 Guide pas-à-pas : Modifier la GPO du serveur pour autoriser GLPI (Erreur 8)</summary>
+            <div class="accordion-content">
+              <ol>
+                <li>Sur le serveur Windows Server 2025, ouvre la <strong>Gestion des stratégies de groupe</strong> (<code>gpmc.msc</code>).</li>
+                <li>Déroule l'arbre : <code>Domaine > entreprise.local > Default Domain Policy</code>.</li>
+                <li>Fais un clic droit sur <strong>Default Domain Policy</strong> et sélectionne <strong>Modifier</strong>.</li>
+                <li>Navigue vers l'emplacement suivant :
+                  <div class="code-block">Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Stratégies locales > Options de sécurité</div>
+                </li>
+                <li>Cherche la stratégie : <code>Sécurité réseau : exigences de signature d'un serveur LDAP</code>.</li>
+                <li>Fais un double-clic dessus, coche <strong>Définir ce paramètre de stratégie</strong> et règle la valeur sur <strong>N'exige pas la signature</strong>.</li>
+                <li>Valide par <strong>Appliquer</strong> puis <strong>OK</strong>.</li>
+                <li>Ouvre un invite de commandes (CMD en Admin) et force l'actualisation des stratégies :
+                  <div class="code-block">gpupdate /force</div>
+                </li>
+              </ol>
+            </div>
+          </details>
+        </li>
+        <li>
+          <strong>Jonction du poste client Windows 11 Pro au domaine AD :</strong>
+          <p>Intégration du poste de travail pour appliquer les stratégies d'entreprise et tester les sessions utilisateurs.</p>
+
+          <!-- GUIDE DÉROULANT : JONCTION WIN 11 -->
+          <details class="guide-accordion">
+            <summary>📖 Guide pas-à-pas : Joindre un PC Windows 11 Pro au domaine AD</summary>
+            <div class="accordion-content">
+              <ol>
+                <li><strong>Configurer le DNS :</strong> Sur le PC Windows 11, va dans les paramètres de la carte réseau et définis le DNS primaire avec l'IP du serveur AD (<code>192.168.1.10</code>).</li>
+                <li>Vérifie la connectivité en ouvrant CMD et en tapant : <code>ping entreprise.local</code>.</li>
+                <li>Ouvre les <strong>Paramètres</strong> Windows > <strong>Système</strong> > <strong>En savoir plus</strong> (ou recherche <em>Système avancé</em>).</li>
+                <li>Clique sur <strong>Domaine ou groupe de travail</strong> (ou <em>Renommer ce PC (avancé)</em>).</li>
+                <li>Dans la fenêtre Propriétés système, clique sur le bouton <strong>Modifier...</strong>.</li>
+                <li>Dans la section <em>Membre de</em>, coche <strong>Domaine</strong> et saisis <code>entreprise.local</code>. Clique sur <strong>OK</strong>.</li>
+                <li>Une fenêtre s'ouvre : indique les identifiants de l'administrateur du domaine (ex: <code>Administrator</code> et son mot de passe).</li>
+                <li>Un message indique <em>"Bienvenue dans le domaine entreprise.local"</em>. Redémarre le PC Windows 11.</li>
+              </ol>
+            </div>
+          </details>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SECTION 4 : GLPI & CONNECTEUR LDAP -->
+    <section class="section-card">
+      <h2 class="section-title"><div class="icon-box">🎫</div> 4. Déploiement GLPI 10 & Interconnexion LDAP</h2>
+      <ul class="steps-list">
+        <li>
+          <strong>Installation LAMP & GLPI sous Debian 13 :</strong>
+          <p>Déploiement d'Apache2, MariaDB, PHP 8.3 et des extensions requises (<code>php-ldap</code>, <code>php-mysqli</code>).</p>
+        </li>
+        <li>
+          <strong>Configuration du Connecteur LDAP & Mapping des attributs :</strong>
+          
+          <!-- GUIDE DÉROULANT : CONFIGURATION LDAP GLPI -->
+          <details class="guide-accordion">
+            <summary>📖 Guide pas-à-pas : Connecter GLPI à l'Active Directory</summary>
+            <div class="accordion-content">
+              <ol>
+                <li>Dans l'interface GLPI, va dans <strong>Configuration</strong> > <strong>Annuaires LDAP</strong>.</li>
+                <li>Clique sur le bouton <strong>+ (Ajouter)</strong> et remplis les champs :
+                  <ul style="margin-left: 20px; margin-top: 5px;">
+                    <li><strong>Nom :</strong> Active Directory Entreprise</li>
+                    <li><strong>Serveur par défaut :</strong> Oui</li>
+                    <li><strong>Hôte :</strong> <code>192.168.1.10</code> | <strong>Port :</strong> <code>389</code></li>
+                    <li><strong>BaseDN :</strong> <code>CN=Users,DC=entreprise,DC=local</code></li>
+                    <li><strong>DN du compte :</strong> <code>CN=Administrator,CN=Users,DC=entreprise,DC=local</code></li>
+                    <li><strong>Mot de passe du compte :</strong> <em>Mot de passe administrateur AD</em></li>
+                    <li><strong>Champ de l'identifiant :</strong> <code>sAMAccountName</code></li>
+                  </ul>
+                </li>
+                <li>Clique sur <strong>Enregistrer</strong>, puis clique sur <strong>Test de liaison à l'annuaire LDAP</strong>. Le message <em>"Test réussi"</em> doit s'afficher.</li>
+                <li>Va dans l'onglet <strong>Test / Importation</strong> pour vérifier les filtres :
+                  <div class="code-block">Filtre de recherche : (objectClass=user)</div>
+                </li>
+                <li>Dans l'onglet <strong>Champ appartenance à un groupe</strong>, configure le mapping des utilisateurs :
+                  <ul style="margin-left: 20px; margin-top: 5px;">
+                    <li><strong>Nom de famille :</strong> <code>sn</code></li>
+                    <li><strong>Prénom :</strong> <code>givenname</code></li>
+                    <li><strong>E-mail :</strong> <code>mail</code></li>
+                  </ul>
+                </li>
+                <li>Pour importer les comptes : va dans <strong>Administration</strong> > <strong>Utilisateurs</strong> > <strong>Liaison annuaire LDAP</strong> > <strong>Importation de nouveaux utilisateurs</strong>.</li>
+              </ol>
+            </div>
+          </details>
+        </li>
+        <li>
+          <strong>Automatisation CLI (Cron) :</strong>
+          <p>Planification du script sous Debian 13 pour resynchroniser les utilisateurs en arrière-plan :</p>
+          <div class="code-block">*/15 * * * * php /var/www/html/glpi/front/cron.php --force ldap</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SECTION 5 : AGENT GLPI -->
+    <section class="section-card">
+      <h2 class="section-title"><div class="icon-box">📦</div> 5. Déploiement de l'Agent GLPI (Inventaire Matériel)</h2>
+      <p>Remontée automatique de la configuration matérielle et logicielle des postes vers le serveur GLPI.</p>
+
+      <!-- GUIDE DÉROULANT : DEPLOIEMENT AGENT GLPI -->
+      <details class="guide-accordion">
+        <summary>📖 Guide pas-à-pas : Installer et forcer l'inventaire de l'Agent GLPI</summary>
+        <div class="accordion-content">
+          <ol>
+            <li>Télécharge le programme d'installation <code>GLPI-Agent-x64.msi</code> sur le poste Windows client ou le serveur Windows 2025.</li>
+            <li>Lance l'installation et choisis le mode d'installation complet.</li>
+            <li>Lors de l'étape <strong>Cible d'inventaire (Target)</strong>, sélectionne <strong>Server</strong> et saisis l'URL de ton serveur GLPI :
+              <div class="code-block">http://192.168.1.101/glpi/front/inventory.php</div>
+            </li>
+            <li>Poursuis l'installation jusqu'à la fin.</li>
+            <li><strong>Forcer l'inventaire immédiat :</strong> Ouvre ton navigateur web sur la machine cliente et accède à l'interface locale de l'agent :
+              <div class="code-block">http://localhost:62354/</div>
+            </li>
+            <li>Clique sur le bouton <strong>Force Inventory</strong>.</li>
+            <li>Retourne sur GLPI dans <strong>Parc</strong> > <strong>Ordinateurs</strong> : la machine apparaît avec tous ses composants (CPU, RAM, Disques, OS).</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- SECTION 6 : ZABBIX 7.0 LTS -->
+    <section class="section-card">
+      <h2 class="section-title"><div class="icon-box">📈</div> 6. Supervision de l'Infrastructure avec Zabbix 7.0 LTS</h2>
+      <ul class="steps-list">
+        <li>
+          <strong>Installation du serveur Zabbix :</strong>
+          <p>Déploiement du serveur Zabbix 7.0 LTS sur Debian 13 avec base de données dédiée sous MariaDB.</p>
+        </li>
+        <li>
+          <strong>Supervision des hôtes :</strong>
+          <p>Contrôle de la disponibilité et des ressources (CPU, RAM, Disque, Ping ICMP) sur le serveur Windows Server 2025 et le routeur pfSense.</p>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Document rédigé par Alexis Messager — BTS SIO SISR — Lab VirtualBox 2026</p>
+  </footer>
+
+  <script>
+    // Animation d'apparition des sections au scroll (Reveal effect)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'all 0.5s ease-out';
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>
