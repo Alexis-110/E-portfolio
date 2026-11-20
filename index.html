@@ -507,16 +507,16 @@
       <h2>Veille technologique</h2>
       <div class="veille-container">
         <div class="veille-card">
-          <h3>🔐 Zero Trust Security &amp; Cloud Infrastructure</h3>
+          <h3>🔐 Zero Trust Security & Cloud Infrastructure</h3>
 
           <!-- ===== RÉSUMÉ (toujours visible) ===== -->
           <div class="veille-summary">
-            <p>Le Zero Trust (« ne jamais faire confiance, toujours vérifier ») remplace la sécurité par périmètre : chaque accès est contrôlé en continu selon l'identité, l'état du poste et le contexte. Ma veille suit sa mise en œuvre concrète dans l'écosystème que j'utilise en stage et en labo : <strong>Microsoft Entra ID</strong> et accès conditionnel, <strong>Intune</strong> pour la conformité des postes, <strong>ServiceNow</strong> pour les incidents, <strong>Proxmox</strong> et <strong>Linux</strong> pour l'infrastructure, sans oublier les <strong>fins de support</strong> et la réglementation <strong>NIS2</strong>.</p>
-            <p class="veille-updated">📅 Dernière mise à jour : <time datetime="2026-10-11">11 octobre 2026</time></p>
+            <p>Le Zero Trust (« ne jamais faire confiance, toujours vérifier ») remplace la sécurité par périmètre : chaque accès est contrôlé en continu selon l'identité, la conformité et l'état du poste, le réseau et le contexte. Ma veille suit sa mise en œuvre concrète dans l'écosystème que j'utilise en stage et en labo : <strong>Microsoft Entra ID</strong> et accès conditionnel, <strong>Intune</strong> pour l'enrôlement et la conformité des postes, <strong>ServiceNow</strong> pour la gestion ITSM, <strong>Proxmox VE</strong> et <strong>Linux</strong> pour l'infrastructure, sans oublier les <strong>fins de support</strong> et la réglementation <strong>NIS2</strong>.</p>
+            <p class="veille-updated">📅 Dernière mise à jour : <time datetime="2026-11-20">20 novembre 2026</time></p>
             <ul class="veille-highlights">
-              <li><strong>Windows 10 :</strong> fin de la 1<sup>re</sup> année d'ESU entreprise le 13 octobre 2026 ; ESU grand public prolongé jusqu'au 12 octobre 2027.</li>
-              <li><strong>NIS2 :</strong> la loi Résilience n'est toujours pas votée en France, son examen à l'Assemblée a été de nouveau reporté le 6 octobre 2026.</li>
-              <li><strong>Outils :</strong> Intune 2609 (déploiements par anneaux), ServiceNow Brazil en accès anticipé, Proxmox VE 9.2 et Debian 11 hors support depuis le 31 août.</li>
+              <li><strong>Windows 10 & Server 2016 :</strong> 1<sup>re</sup> année d'ESU entreprise Windows 10 achevée le 13 octobre 2026 (ESU grand public prolongé jusqu'au 12 octobre 2027) ; fin du support étendu de Windows Server 2016 le 12 janvier 2027.</li>
+              <li><strong>NIS2 :</strong> le projet de loi Résilience a été adopté en première lecture à l'Assemblée nationale le 17 novembre 2026.</li>
+              <li><strong>Outils :</strong> Intune 2610 (fin octobre 2026), ServiceNow Brazil en disponibilité générale depuis le 5 novembre 2026, Proxmox VE 9.2 et fin du LTS de Debian 11 le 31 août 2026.</li>
             </ul>
           </div>
 
@@ -528,20 +528,20 @@
             </summary>
 
             <div class="veille-content">
-              <p class="veille-note">Informations vérifiées le 11 octobre 2026 auprès des sources listées en bas de section. Certaines échéances (NIS2, ESU Windows 10, sorties ServiceNow) évoluent régulièrement.</p>
+              <p class="veille-note">Informations vérifiées le 20 novembre 2026 auprès des sources listées en bas de section. Les calendriers éditeurs, cycles de versions et textes législatifs évoluent régulièrement.</p>
 
-              <h4>📌 Contexte &amp; Enjeux</h4>
-              <p>L'architecture Zero Trust ("Ne jamais faire confiance, toujours vérifier") révolutionne la sécurité du système d'information. En éliminant la notion de périmètre de confiance traditionnel, elle impose un contrôle continu des accès, des identités et des terminaux, indispensable pour accompagner l'essor du travail hybride et des infrastructures Cloud.</p>
+              <h4>📌 Contexte & Enjeux</h4>
+              <p>L'architecture Zero Trust (« Ne jamais faire confiance, toujours vérifier ») fait évoluer la sécurité du système d'information. En dépassant la logique d'un périmètre interne présumé sûr, elle impose une vérification continue des identités, des terminaux, des flux réseau et des droits d'accès, adaptée aux environnements hybrides, au cloud et au télétravail.</p>
               <ul>
-                <li><strong>Trois principes :</strong> vérifier explicitement chaque demande d'accès, appliquer le moindre privilège, partir du principe qu'une compromission a déjà eu lieu.</li>
-                <li><strong>Cinq piliers (NIST SP 800-207, modèle de maturité CISA) :</strong> identité, appareils, réseaux, applications &amp; charges de travail, données.</li>
-                <li><strong>Évolution en 2026 :</strong> l'identité devient le principal point de contrôle, le Zero Trust s'étend aux environnements industriels (OT) et, depuis septembre 2026, au trafic des agents IA.</li>
+                <li><strong>Principes fondateurs :</strong> vérifier explicitement chaque demande d'accès (authentification forte, conformité du terminal, contexte), appliquer le principe du moindre privilège (accès juste-à-temps et juste-assez) et supposer qu'une compromission peut déjà exister.</li>
+                <li><strong>Cinq piliers (NIST SP 800-207, modèle de maturité CISA) :</strong> identités, terminaux/appareils, réseaux, applications & charges de travail, données.</li>
+                <li><strong>Évolution en 2026 :</strong> l'identité et la posture du poste deviennent des points de contrôle centraux, le Zero Trust s'adapte aux environnements industriels (OT) et s'étend aux interactions automatisées / agents IA avec gouvernance des accès.</li>
               </ul>
 
-              <h4>⚙️ Méthodologie &amp; Supports de veille</h4>
+              <h4>⚙️ Méthodologie & Supports de veille</h4>
               <ul>
-                <li><strong>Collecte automatisée (Push) :</strong> Flux RSS centralisés sur Feedly (IT-Connect, ZDNet, Microsoft Security Blog) et Google Alerts sur les mots-clés <code>Zero Trust</code>, <code>Microsoft Entra ID</code>, <code>Intune Compliance</code>.</li>
-                <li><strong>Recherche active (Pull) :</strong> Consultation hebdomadaire des documentations officielles Microsoft Learn, ServiceNow Community et bulletins de sécurité cert-fr.</li>
+                <li><strong>Collecte automatisée (Push) :</strong> Flux RSS centralisés (IT-Connect, ZDNet, blogs sécurité/éditeurs) et alertes ciblées sur les mots-clés <code>Zero Trust</code>, <code>Microsoft Entra ID</code>, <code>Intune</code>, <code>NIS2</code>.</li>
+                <li><strong>Recherche active (Pull) :</strong> Consultation régulière des notes de version officielles (Microsoft Learn, ServiceNow Community, Proxmox, Debian) et des publications institutionnelles (ANSSI / CERT-FR, CISA).</li>
               </ul>
               <div class="veille-table-wrap">
                 <table class="veille-table">
@@ -549,41 +549,40 @@
                     <tr><th>Support</th><th>Type</th><th>Rythme</th><th>Ce que j'y cherche</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Feedly (IT-Connect, ZDNet, Microsoft Security Blog)</td><td>Flux RSS (push)</td><td>Quotidien</td><td>Actualités sécurité et écosystème Microsoft</td></tr>
-                    <tr><td>Google Alerts</td><td>Alertes mail (push)</td><td>Au fil de l'eau</td><td>Zero Trust, Entra ID, Intune Compliance</td></tr>
-                    <tr><td>Microsoft Learn — « What's new in Intune »</td><td>Documentation officielle (pull)</td><td>Hebdomadaire</td><td>Nouvelles fonctions, versions de service (2609…)</td></tr>
-                    <tr><td>Message Center Microsoft (via Entra.News)</td><td>Annonces éditeur</td><td>Hebdomadaire</td><td>Changements Entra ID avec dates d'application</td></tr>
-                    <tr><td>ServiceNow Community &amp; Release Notes</td><td>Documentation officielle (pull)</td><td>À chaque release</td><td>Calendrier des familles, patchs, nouveautés</td></tr>
-                    <tr><td>Debian (annonces LTS), Proxmox (communiqués, forum)</td><td>Annonces projet (pull)</td><td>À chaque publication</td><td>Versions, fins de support, correctifs</td></tr>
-                    <tr><td>ANSSI / CERT-FR</td><td>Bulletins officiels (pull)</td><td>Hebdomadaire</td><td>Alertes, NIS2, référentiel ReCyF</td></tr>
-                    <tr><td>CISA — « Journey to Zero Trust »</td><td>Guides officiels (pull)</td><td>À chaque publication</td><td>Bonnes pratiques Zero Trust</td></tr>
+                    <tr><td>Flux RSS (IT-Connect, ZDNet, blogs sécurité)</td><td>Flux RSS (push)</td><td>Quotidien / hebdomadaire</td><td>Actualités cybersécurité, systèmes et écosystème Microsoft</td></tr>
+                    <tr><td>Alertes / Veille thématique</td><td>Alertes (push)</td><td>Au fil de l'eau</td><td>Zero Trust, Entra ID, conformité Intune, évolutions réglementaires</td></tr>
+                    <tr><td>Microsoft Learn — « What's new in Intune »</td><td>Documentation officielle (pull)</td><td>Hebdomadaire / par release</td><td>Nouvelles fonctions, versions de service (2609, 2610…)</td></tr>
+                    <tr><td>Microsoft Tech Community & Entra.News</td><td>Annonces éditeur / veille</td><td>Hebdomadaire</td><td>Évolutions Entra ID, accès conditionnel, SSPR, calendriers</td></tr>
+                    <tr><td>ServiceNow Community & Release Notes</td><td>Documentation officielle (pull)</td><td>À chaque release</td><td>Calendrier des versions (Australia, Brazil…), patchs, dépréciations</td></tr>
+                    <tr><td>Debian, Ubuntu, Proxmox (annonces & release notes)</td><td>Annonces projet (pull)</td><td>À chaque publication</td><td>Versions mineures/LTS, fonctions SDN/HA, fins de support</td></tr>
+                    <tr><td>ANSSI / CERT-FR & Assemblée nationale</td><td>Sources officielles (pull)</td><td>Hebdomadaire / au fil des textes</td><td>Bulletins de sécurité, transposition NIS2 (loi Résilience), ReCyF</td></tr>
+                    <tr><td>CISA — « Journey to Zero Trust »</td><td>Guides officiels (pull)</td><td>À chaque publication</td><td>Architecture Zero Trust, TIC 3.0, déclinaison OT</td></tr>
                   </tbody>
                 </table>
               </div>
 
-              <h4>📰 Fil d'actualités &amp; Évolution de la thématique</h4>
+              <h4>📰 Fil d'actualités & Évolution de la thématique</h4>
               <p>Classées par domaine, de la plus récente à la plus ancienne.</p>
 
               <details class="veille-sub" open>
-                <summary>🔑 Identité &amp; accès — Microsoft Entra ID</summary>
+                <summary>🔑 Identité & accès — Microsoft Entra ID</summary>
                 <ul>
-                  <li><strong>Octobre 2026 :</strong> Windows Hello for Business et macOS Platform SSO sont reconnus comme facteurs MFA à part entière : l'utilisateur n'a plus besoin d'une clé d'accès supplémentaire pour satisfaire l'exigence de MFA.</li>
-                  <li><strong>5 octobre 2026 :</strong> campagne d'inscription SSPR (réinitialisation de mot de passe en libre-service) qui invite administrateurs et utilisateurs à enregistrer leurs méthodes d'authentification avant le durcissement.</li>
-                  <li><strong>Septembre 2026 :</strong> échéance de migration des « Custom controls » de l'accès conditionnel vers <em>External MFA</em> (solutions MFA tierces) ; leur retrait définitif est prévu en mai 2027.</li>
-                  <li><strong>Printemps–été 2026 :</strong> application renforcée de l'accès conditionnel. Une stratégie ciblant « toutes les ressources » avec des exclusions s'applique désormais aussi aux connexions qui ne demandent que des autorisations OIDC ou annuaire limitées : ces applications peuvent recevoir un défi MFA ou de conformité de l'appareil. Déploiement progressif à partir de fin mars 2026.</li>
-                  <li><strong>Depuis octobre 2024 :</strong> MFA obligatoire pour les portails d'administration (Azure, Entra, Intune), dans le cadre de la Secure Future Initiative lancée en novembre 2023.</li>
+                  <li><strong>9 novembre 2026 :</strong> durcissement du libre-service de réinitialisation de mot de passe (SSPR) dans Entra ID : seules les méthodes d'authentification explicitement enregistrées sont acceptées (les numéros ou adresses présents uniquement comme attributs d'annuaire sans enregistrement formel ne suffisent plus).</li>
+                  <li><strong>1<sup>er</sup> octobre 2026 :</strong> retrait des anciennes stratégies héritées <em>ID Protection</em> (passage en lecture seule / fin de support), nécessitant de recréer les règles de risque utilisateur et de connexion dans l'Accès conditionnel (avec validation en mode rapport avant activation et exclusion des comptes d'urgence / <em>break-glass</em>).</li>
+                  <li><strong>Septembre 2026 :</strong> début du retrait progressif des <em>Custom controls</em> de l'accès conditionnel au profit d'<em>External MFA</em> (retrait complet prévu en mai 2027).</li>
+                  <li><strong>Été 2026 (à partir de mi-juillet 2026) :</strong> application cohérente des stratégies d'Accès conditionnel lors de l'enregistrement des informations de sécurité, incluant le provisionnement <em>Windows Hello for Business</em> et l'enregistrement <em>macOS Platform SSO</em>.</li>
+                  <li><strong>Depuis octobre 2024 :</strong> MFA obligatoire sur les portails d'administration Microsoft (Azure, Entra, Intune) dans le cadre de la <em>Secure Future Initiative</em>.</li>
                 </ul>
               </details>
 
               <details class="veille-sub" open>
-                <summary>💻 Postes, Windows &amp; Intune</summary>
+                <summary>💻 Postes, Windows & Intune</summary>
                 <ul>
-                  <li><strong>13 octobre 2026 :</strong> fin de la première année d'ESU entreprise pour Windows 10 ; la deuxième année court jusqu'au 12 octobre 2027 et la troisième jusqu'au 10 octobre 2028. Les tarifs d'ESU des entreprises vont environ doubler d'après la presse spécialisée.</li>
-                  <li><strong>Fin septembre 2026 — Intune 2609 :</strong> la nouvelle page « appareil unique » devient l'expérience par défaut, paramètres pour Windows 26H2, nouveaux réglages de protection d'exécution des agents IA (Microsoft Defender for Endpoint) et intégration en libre-service des partenaires de conformité MDM.</li>
-                  <li><strong>Septembre 2026 — Intune « Deployments » (aperçu public) :</strong> déploiement progressif d'applications et de stratégies de configuration par anneaux, avec maîtrise du calendrier et couplage possible à l'approbation par plusieurs administrateurs (Multiple Admin Approval).</li>
-                  <li><strong>Septembre 2026 :</strong> Microsoft poursuit son objectif de désactiver NTLM par défaut dans Windows, à terme, pour une authentification sécurisée par défaut.</li>
-                  <li><strong>Septembre 2026 :</strong> le Zero Trust s'étend au trafic des agents IA : Microsoft Purview et Entra Global Secure Access protègent désormais les données en transit (disponibilité générale), y compris les flux d'agents agissant pour le compte d'un utilisateur.</li>
-                  <li><strong>25 juin 2026 :</strong> Microsoft prolonge d'un an l'ESU grand public de Windows 10, désormais valable jusqu'au 12 octobre 2027 (changement apparu dans la documentation, sans annonce formelle).</li>
+                  <li><strong>Fin octobre 2026 — Intune 2610 :</strong> nouvelle version de service Intune (semaine du 26 octobre 2026), avec notamment l'ajout d'applications protégées supplémentaires pour la gestion applicative.</li>
+                  <li><strong>13 octobre 2026 :</strong> fin de la première année du programme ESU (<em>Extended Security Updates</em>) entreprise pour Windows 10 ; la deuxième année court jusqu'au 12 octobre 2027 et la troisième jusqu'au 10 octobre 2028.</li>
+                  <li><strong>Septembre 2026 — Intune 2609 & déploiements par anneaux :</strong> évolution de l'expérience de gestion des appareils, paramètres liés aux évolutions Windows, déploiements progressifs par anneaux (<em>Deployments</em> en aperçu public) et renforcement des contrôles liés aux agents / flux IA.</li>
+                  <li><strong>25 juin 2026 :</strong> prolongation d'un an du programme ESU grand public pour Windows 10 (version 22H2), désormais valable jusqu'au 12 octobre 2027.</li>
+                  <li><strong>À surveiller côté messagerie :</strong> arrêt définitif d'<em>Exchange Web Services (EWS)</em> dans Exchange Online prévu le 1<sup>er</sup> avril 2027, poussant à vérifier les applications legacy qui s'appuient encore sur EWS.</li>
                   <li><strong>14 octobre 2025 :</strong> fin du support standard de Windows 10.</li>
                 </ul>
               </details>
@@ -591,39 +590,39 @@
               <details class="veille-sub" open>
                 <summary>🎫 ServiceNow</summary>
                 <ul>
-                  <li><strong>24 septembre 2026 :</strong> la release <strong>Brazil</strong> passe en accès anticipé (instances de développement personnelles disponibles le même jour) ; disponibilité générale attendue début novembre 2026. Au programme : outils de développement basés sur des agents IA (Build Agent, Autonomous Engineer).</li>
-                  <li><strong>5 mai 2026 :</strong> disponibilité générale de la release <strong>Australia</strong> (accès anticipé le 12 mars). Première release à nom de pays, après Zurich (septembre 2025) qui concluait la série des noms de villes de A à Z. Les versions majeures passent à un rythme T2/T4. Nouveautés : analytique de plateforme unifiée, gouvernance de l'IA renforcée, rôles d'administration granulaires, historique d'usurpation d'identité.</li>
-                  <li><strong>À venir :</strong> la release suivante, Canada, est annoncée pour 2027.</li>
+                  <li><strong>5 novembre 2026 :</strong> disponibilité générale (GA) de la release <strong>Brazil</strong> (après l'accès anticipé du 24 septembre 2026), marquant la nouvelle cadence de versions et l'intégration renforcée d'assistants / agents d'automatisation et de gouvernance (notamment avec des montées en version de production fréquentes en décembre).</li>
+                  <li><strong>Mai 2026 :</strong> disponibilité générale de la release <strong>Australia</strong> (accès anticipé en mars 2026), inaugurant la nomenclature par noms de pays après <em>Zurich</em> (fin du cycle alphabétique de villes).</li>
+                  <li><strong>À venir :</strong> la release suivante, <strong>Canada</strong>, est annoncée pour 2027.</li>
                 </ul>
               </details>
 
               <details class="veille-sub" open>
                 <summary>🖧 Virtualisation — Proxmox VE</summary>
                 <ul>
-                  <li><strong>21 mai 2026 — Proxmox VE 9.2 :</strong> équilibreur de charge dynamique (migration automatique des VM gérées par la haute disponibilité), commandes pour « armer » et « désarmer » la HA sur tout le cluster pendant une maintenance, WireGuard et BGP dans le SDN, gestion graphique des modèles de CPU personnalisés. Base Debian 13.5, noyau Linux 7.0, QEMU 11.0, LXC 7.0, ZFS 2.4.</li>
-                  <li><strong>19 novembre 2025 — Proxmox VE 9.1 :</strong> conteneurs LXC créés depuis des images OCI, état TPM au format qcow2, virtualisation imbriquée, Intel TDX, actions groupées au niveau du datacenter, noyau 6.17.</li>
-                  <li><strong>Août 2025 — Proxmox VE 9.0 :</strong> passage à Debian 13, snapshots en chaînes de volumes (iSCSI, Fibre Channel), règles d'affinité HA, SDN fabrics (OpenFabric, OSPF), extension RAIDZ avec ZFS 2.3.</li>
+                  <li><strong>21 mai 2026 — Proxmox VE 9.2 :</strong> équilibreur de charge dynamique (répartition / migration des charges gérées en haute disponibilité), commandes pour armer ou désarmer la HA du cluster lors des maintenances, support natif de <em>WireGuard</em> et <em>BGP</em> dans le SDN (avec <em>route maps</em> et <em>prefix lists</em>), gestion des modèles CPU personnalisés et prise en charge de <em>Ceph Tentacle 20.2</em>. Socle basé sur Debian 13.5, noyau Linux 7.0, QEMU 11.0, LXC 7.0 et ZFS 2.4.</li>
+                  <li><strong>19 novembre 2025 — Proxmox VE 9.1 :</strong> création de conteneurs LXC depuis des images OCI, état TPM au format qcow2, virtualisation imbriquée, Intel TDX et actions groupées au niveau du datacenter (noyau 6.17).</li>
+                  <li><strong>Août 2025 — Proxmox VE 9.0 :</strong> passage sur base Debian 13, snapshots en chaîne sur certains stockages blocs, règles d'affinité HA, SDN fabrics et extension RAIDZ avec ZFS 2.3.</li>
                 </ul>
               </details>
 
               <details class="veille-sub" open>
-                <summary>🐧 Systèmes Linux — Debian &amp; Ubuntu</summary>
+                <summary>🐧 Systèmes Linux — Debian & Ubuntu</summary>
                 <ul>
-                  <li><strong>12 septembre 2026 :</strong> Debian 13.7, mise à jour intermédiaire de « Trixie » (version stable depuis le 9 août 2025).</li>
-                  <li><strong>31 août 2026 :</strong> fin du support LTS de Debian 11 « Bullseye » : plus aucune mise à jour de sécurité depuis septembre (un support commercial étendu existe pour un sous-ensemble de paquets). Debian 12 « Bookworm » est en LTS depuis juin 2026.</li>
-                  <li><strong>27 août 2026 :</strong> Ubuntu 26.04.1 LTS « Resolute Raccoon ».</li>
+                  <li><strong>12 septembre 2026 :</strong> publication de <strong>Debian 13.7</strong> (« Trixie », version stable initialement publiée le 9 août 2025).</li>
+                  <li><strong>31 août 2026 :</strong> fin du support LTS de <strong>Debian 11</strong> (« Bullseye ») ; passage de <strong>Debian 12</strong> (« Bookworm ») en LTS depuis juin 2026.</li>
+                  <li><strong>27 août 2026 :</strong> publication d'<strong>Ubuntu 26.04.1 LTS</strong> (« Resolute Raccoon »), avec un support standard/LTS jusqu'en 2031 (et jusqu'en 2036 via Ubuntu Pro), abandon de la session GNOME X11 et transition vers des réécritures en Rust pour certains utilitaires système (comme <code>sudo</code>).</li>
                 </ul>
               </details>
 
               <details class="veille-sub" open>
-                <summary>🏛️ Réglementation &amp; référentiels</summary>
+                <summary>🏛️ Réglementation & référentiels</summary>
                 <ul>
-                  <li><strong>6 octobre 2026 :</strong> l'examen en séance à l'Assemblée nationale du projet de loi Résilience (transposition de NIS2, REC et DORA), prévu le 7 octobre, est de nouveau retiré de l'ordre du jour, sans nouvelle date.</li>
-                  <li><strong>1<sup>er</sup> octobre 2026 :</strong> le directeur général de l'ANSSI indique envisager d'exiger une conformité complète à NIS2 fin 2028.</li>
-                  <li><strong>8 juillet 2026 :</strong> la Commission européenne saisit la Cour de justice de l'UE contre la France et trois autres États pour défaut de transposition dans les délais (échéance initiale : 17 octobre 2024).</li>
-                  <li><strong>24 juin 2026 :</strong> la CISA publie un guide sur la transition vers des architectures Zero Trust modernes (TIC 3.0 et SASE), dans sa série « Journey to Zero Trust ».</li>
-                  <li><strong>29 avril 2026 :</strong> la CISA et ses partenaires publient « Adapting Zero Trust Principles to Operational Technology », premier guide complet d'application du Zero Trust aux systèmes industriels, aligné sur le NIST CSF 2.0.</li>
-                  <li><strong>17 mars 2026 :</strong> l'ANSSI met à disposition le Référentiel Cyber France (ReCyF), mesures recommandées pour atteindre les objectifs de NIS2, diffusé comme document de travail.</li>
+                  <li><strong>17 novembre 2026 :</strong> l'Assemblée nationale adopte en première lecture le projet de loi relatif à la résilience des infrastructures critiques et au renforcement de la cybersécurité (« loi Résilience », transpositions de <strong>NIS2</strong>, REC et DORA) par 464 voix contre 64, après suppression de l'article 16 bis.</li>
+                  <li><strong>Octobre – début novembre 2026 :</strong> après un report début octobre, le texte a été examiné en séance les 9 et 10 novembre ; la DG de l'ANSSI a également évoqué un calendrier de mise en conformité visé fin 2028 pour les entités concernées.</li>
+                  <li><strong>8 juillet 2026 :</strong> saisine de la Cour de justice de l'Union européenne par la Commission européenne contre la France et d'autres États membres pour retard de transposition de NIS2 (échéance initiale fixée au 17 octobre 2024).</li>
+                  <li><strong>Juin 2026 :</strong> publication par la CISA d'un guide sur la transition vers des architectures Zero Trust modernisées (TIC 3.0 / SASE).</li>
+                  <li><strong>29 avril 2026 :</strong> publication par la CISA et ses partenaires d'un guide d'application des principes Zero Trust aux environnements industriels / opérationnels (<em>OT</em>), aligné sur NIST CSF 2.0.</li>
+                  <li><strong>17 mars 2026 :</strong> mise à disposition par l'ANSSI du <em>Référentiel Cyber France (ReCyF)</em> (document de travail détaillant des mesures alignées sur les objectifs de NIS2).</li>
                 </ul>
               </details>
 
@@ -631,56 +630,56 @@
               <div class="veille-table-wrap">
                 <table class="veille-table">
                   <thead>
-                    <tr><th>Produit</th><th>Échéance</th><th>Statut</th></tr>
+                    <tr><th>Produit / Composant</th><th>Échéance</th><th>Statut</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Windows 10 22H2 — ESU entreprise, année 1</td><td>13 octobre 2026</td><td><span class="tag tag-soon">Imminent</span></td></tr>
-                    <tr><td>Windows Server 2016 — support étendu</td><td>12 janvier 2027</td><td><span class="tag tag-soon">Proche</span></td></tr>
-                    <tr><td>Entra ID — Custom controls (accès conditionnel)</td><td>Retrait en mai 2027</td><td><span class="tag tag-plan">Migration à faire</span></td></tr>
-                    <tr><td>Windows 10 — ESU grand public (prolongé) et ESU entreprise, année 2</td><td>12 octobre 2027</td><td><span class="tag tag-plan">À planifier</span></td></tr>
-                    <tr><td>Windows 10 — ESU entreprise, année 3</td><td>10 octobre 2028</td><td><span class="tag tag-plan">À planifier</span></td></tr>
+                    <tr><td>Windows Server 2016 — support étendu</td><td>12 janvier 2027</td><td><span class="tag tag-soon">Imminent (< 2 mois)</span></td></tr>
+                    <tr><td>Exchange Online — arrêt d'Exchange Web Services (EWS)</td><td>1<sup>er</sup> avril 2027</td><td><span class="tag tag-plan">À anticiper</span></td></tr>
+                    <tr><td>Entra ID — Custom controls (accès conditionnel)</td><td>Retrait complet en mai 2027</td><td><span class="tag tag-plan">Migration vers External MFA</span></td></tr>
+                    <tr><td>Windows 10 22H2 — ESU grand public (prolongé) & ESU entreprise année 2</td><td>12 octobre 2027</td><td><span class="tag tag-plan">À planifier</span></td></tr>
+                    <tr><td>Windows 10 22H2 — ESU entreprise année 3</td><td>10 octobre 2028</td><td><span class="tag tag-plan">À planifier</span></td></tr>
                     <tr><td>Debian 12 « Bookworm » — LTS</td><td>30 juin 2028</td><td><span class="tag tag-ok">En LTS</span></td></tr>
                     <tr><td>Debian 13 « Trixie » — sécurité, puis LTS</td><td>9 août 2028, puis 30 juin 2030</td><td><span class="tag tag-ok">Support actif</span></td></tr>
+                    <tr><td>Windows 10 — ESU entreprise année 1</td><td>13 octobre 2026</td><td><span class="tag tag-ended">Terminé (année 1)</span></td></tr>
                     <tr><td>Debian 11 « Bullseye » — LTS</td><td>31 août 2026</td><td><span class="tag tag-ended">Terminé</span></td></tr>
                     <tr><td>Windows 10 — support standard</td><td>14 octobre 2025</td><td><span class="tag tag-ended">Terminé</span></td></tr>
                   </tbody>
                 </table>
               </div>
 
-              <h4>🛠️ Technologies &amp; Notions clés</h4>
+              <h4>🛠️ Technologies & Notions clés</h4>
               <ul>
-                <li><strong>Gestion des Identités (IAM) :</strong> Microsoft Entra ID, authentification forte (MFA), accès conditionnel, External MFA, Windows Hello for Business.</li>
-                <li><strong>Gestion des Terminaux (MDM) :</strong> Microsoft Intune pour garantir la conformité des postes avant autorisation réseau.</li>
-                <li><strong>Segmentation &amp; Supervision :</strong> Microsegmentation sur hyperviseurs (Proxmox/VirtualBox), filtrage applicatif (Fail2ban, UFW) et gestion d'incidents via ServiceNow.</li>
-                <li><strong>Cadres de référence :</strong> NIST SP 800-207, modèle de maturité Zero Trust de la CISA, directive NIS2 et référentiel ReCyF de l'ANSSI.</li>
+                <li><strong>Gestion des Identités & Accès (IAM) :</strong> Microsoft Entra ID, MFA, Accès conditionnel, <em>External MFA</em>, durcissement SSPR, <em>Windows Hello for Business</em>.</li>
+                <li><strong>Gestion des Terminaux (MDM / UEM) :</strong> Microsoft Intune, Autopilot, conformité des postes et déploiements progressifs.</li>
+                <li><strong>Infrastructure, Réseau & Supervision :</strong> Proxmox VE (HA, SDN, stockage), Linux (Debian, Ubuntu), pare-feu/segmentation (pfSense, UFW, Fail2ban) et gestion des incidents/changements (ServiceNow, GLPI, Zabbix).</li>
+                <li><strong>Gouvernance & Conformité :</strong> NIST SP 800-207, modèle de maturité Zero Trust de la CISA, directive NIS2 (loi Résilience) et référentiel ReCyF de l'ANSSI.</li>
               </ul>
 
-              <h4>💡 Application pratique &amp; Impact dans mon parcours</h4>
-              <p>Cette veille a directement nourri mon expérience professionnelle lors de mes stages chez <strong>Groupe Henner</strong> (enrôlement et conformité de postes via Microsoft Intune, gestion des tickets sous ServiceNow). Elle m'a également permis d'appliquer des stratégies de segmentation et de durcissement réseau sur mes environnements de laboratoire (VirtualBox, clusters Proxmox et règles GPO sous Active Directory).</p>
+              <h4>💡 Application pratique & Impact dans mon parcours</h4>
+              <p>Cette veille nourrit directement ma pratique en stage chez <strong>Groupe Henner</strong> (gestion de tickets sous ServiceNow, préparation/enrôlement et conformité des postes, maintien en condition opérationnelle) et mes travaux en laboratoire et en BTS SIO SISR (administration Windows Server et Linux, règles GPO, segmentation réseau, clusters Proxmox et suivi du cycle de vie des OS).</p>
 
               <h4>🔗 Sources consultées</h4>
               <ul class="veille-sources">
-                <li><a href="https://www.helpnetsecurity.com/2026/01/29/microsoft-entra-conditional-access-policy-enforcement/" target="_blank" rel="noopener">Help Net Security — Changement d'application de l'accès conditionnel Entra</a></li>
-                <li><a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/microsoft-entra-id-security-updates-what-organizations-need-to-do-now/4522024" target="_blank" rel="noopener">Microsoft Tech Community — Entra ID security updates (Custom controls, SSPR)</a></li>
-                <li><a href="https://daily.entra.news/topics/conditional-access/" target="_blank" rel="noopener">Entra.News — Conditional Access</a></li>
                 <li><a href="https://learn.microsoft.com/en-us/intune/whats-new/" target="_blank" rel="noopener">Microsoft Learn — What's new in Microsoft Intune</a></li>
-                <li><a href="https://www.microsoft.com/en-us/security/blog/2026/09/24/whats-new-in-microsoft-security-september-2026/" target="_blank" rel="noopener">Microsoft Security Blog — What's new in Microsoft Security : septembre 2026</a></li>
-                <li><a href="https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-news-you-can-use-september-2026/4552395" target="_blank" rel="noopener">Windows IT Pro Blog — Windows news you can use : septembre 2026</a></li>
-                <li><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-quietly-extends-free-windows-10-esu-support-to-october-2027/" target="_blank" rel="noopener">BleepingComputer — Prolongation de l'ESU grand public Windows 10</a></li>
-                <li><a href="https://computerworld.com/article/4231366/windows-11-gains-ground-as-price-hike-looms-for-windows-10-security-updates.html" target="_blank" rel="noopener">Computerworld — Hausse des tarifs ESU Windows 10</a></li>
-                <li><a href="https://www.microsoft.com/en-us/windows-server/blog/2026/02/25/planning-ahead-for-windows-server-2016-end-of-support/" target="_blank" rel="noopener">Microsoft Windows Server Blog — Fin de support de Windows Server 2016</a></li>
-                <li><a href="https://www.servicenow.com/community/product-launch-forum/i-would-like-to-know-the-new-australia-version-release-date/td-p/3577767" target="_blank" rel="noopener">ServiceNow Community — Dates de la release Australia</a></li>
-                <li><a href="https://www.dotsquares.com/press-and-events/tech/servicenow-brazil-release-2026" target="_blank" rel="noopener">Dotsquares — ServiceNow Brazil release 2026</a></li>
-                <li><a href="https://proxmox.com/en/about/company-details/press-releases/proxmox-virtual-environment-9-2" target="_blank" rel="noopener">Proxmox — Communiqué Proxmox VE 9.2</a></li>
-                <li><a href="https://www.proxmox.com/en/services/training-courses/videos/proxmox-virtual-environment/whats-new-in-proxmox-ve-9-1" target="_blank" rel="noopener">Proxmox — Nouveautés de Proxmox VE 9.1</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/changes/whats-new-version-2609" target="_blank" rel="noopener">Microsoft Learn — What's new in Configuration Manager / Intune version 2609</a></li>
+                <li><a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/microsoft-entra-id-security-updates-what-organizations-need-to-do-now/4522024" target="_blank" rel="noopener">Microsoft Tech Community — Entra ID security updates (Custom controls, SSPR, CA)</a></li>
+                <li><a href="https://www.tiagoscarvalho.com/azure-entra-id/entra-risk-policies-ca-migration-2026" target="_blank" rel="noopener">Tiago Carvalho — Migration des politiques de risque Entra ID vers Conditional Access</a></li>
+                <li><a href="https://www.microsoft.com/fr-fr/windows/extended-security-updates" target="_blank" rel="noopener">Microsoft — Mises à jour de sécurité étendues (ESU) de Windows 10</a></li>
+                <li><a href="https://windowsmanagementexperts.com/windows-10-consumer-esu-october-2027-small-office/" target="_blank" rel="noopener">Windows Management Experts — Windows 10 ESU (octobre 2027) & échéances</a></li>
+                <li><a href="https://www.schneider.im/microsoft-windows-10-personal-extended-security-updates-available-through-october-2027/" target="_blank" rel="noopener">Schneider IT Management — Windows 10 ESU, Windows Server 2016 & Exchange Online EWS</a></li>
+                <li><a href="https://learn.microsoft.com/fr-fr/lifecycle/products/windows-server-2016" target="_blank" rel="noopener">Microsoft Lifecycle — Windows Server 2016</a></li>
+                <li><a href="https://www.servicenow.com/community/upgrades-and-patching-blogs/kickstart-your-servicenow-brazil-release-guide-part-1-of-4/ba-p/3617254" target="_blank" rel="noopener">ServiceNow Community — Guide de la release ServiceNow Brazil (2026)</a></li>
+                <li><a href="https://www.servicenow.com/community/product-launch-forum/i-would-like-to-know-the-new-australia-version-release-date/td-p/3577767" target="_blank" rel="noopener">ServiceNow Community — Calendrier de la release Australia</a></li>
+                <li><a href="https://proxmox.com/en/about/company-details/press-releases/proxmox-virtual-environment-9-2" target="_blank" rel="noopener">Proxmox — Communiqué officiel Proxmox VE 9.2</a></li>
+                <li><a href="https://proxmox.com/en/services/training-courses/videos/proxmox-virtual-environment/whats-new-in-proxmox-ve-9-1" target="_blank" rel="noopener">Proxmox — Nouveautés de Proxmox VE 9.1</a></li>
                 <li><a href="https://www.debian.org/News/2026/20260831" target="_blank" rel="noopener">Debian — Fin du support LTS de Debian 11</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/Debian_release_version_history" target="_blank" rel="noopener">Wikipedia — Historique des versions de Debian</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/Ubuntu" target="_blank" rel="noopener">Wikipedia — Ubuntu</a></li>
-                <li><a href="https://www.leto.legal/news/assemblee-nationale-report-projet-loi-resilience-nis2-octobre-2026" target="_blank" rel="noopener">Leto — Report de l'examen de la loi Résilience (NIS2)</a></li>
-                <li><a href="https://aocsi.fr/blog/loi-resilience-transposition-nis2" target="_blank" rel="noopener">AOCSI — Où en est la transposition de NIS2</a></li>
+                <li><a href="https://memolinux.fr/distributions/ubuntu/" target="_blank" rel="noopener">MémoLinux — Ubuntu 26.04.1 LTS : nouveautés et installation</a></li>
+                <li><a href="https://ubuntu.fan/fr/docs/ref/changelog/point-releases" target="_blank" rel="noopener">Ubuntu.Fan — Versions ponctuelles Ubuntu 26.04.1 / 26.04.2</a></li>
+                <li><a href="https://www.channelnews.fr/lassemblee-nationale-adopte-la-loi-resilience-en-premiere-lecture-160239" target="_blank" rel="noopener">ChannelNews — L'Assemblée nationale adopte la loi Résilience en première lecture</a></li>
+                <li><a href="https://www.itforbusiness.fr/loi-resilience-nis-2-assemblee-adopte-110073" target="_blank" rel="noopener">IT for Business — NIS 2 : l'Assemblée adopte le projet de loi Résilience</a></li>
                 <li><a href="https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N50731" target="_blank" rel="noopener">Assemblée nationale — Dossier législatif du projet de loi Résilience</a></li>
                 <li><a href="https://www.cisa.gov/news-events/news/new-cisa-guide-assists-federal-agencies-transitioning-modernized-zero-trust-architectures" target="_blank" rel="noopener">CISA — Guide de transition vers le Zero Trust (TIC 3.0)</a></li>
-                <li><a href="https://industrialcyber.co/zero-trust/new-cisa-guidance-outlines-zero-trust-roadmap-for-ot-environments-facing-legacy-constraints-and-growing-attack-surfaces/" target="_blank" rel="noopener">Industrial Cyber — Guide CISA Zero Trust pour l'OT</a></li>
+                <li><a href="https://industrialcyber.co/zero-trust/new-cisa-guidance-outlines-zero-trust-roadmap-for-ot-environments-facing-legacy-constraints-and-growing-attack-surfaces/" target="_blank" rel="noopener">Industrial Cyber — Feuille de route Zero Trust CISA pour les environnements OT</a></li>
               </ul>
             </div>
           </details>
